@@ -22,7 +22,7 @@ if __name__ == "__main__":
     for i in range(num_samples):
         take_sample([], 0, num_variants)
     total = sum(num_wells_list)
-    print float(total)/num_samples
+    print (float(total)/num_samples)
     
     # answer with 100000 iterations is
     # 14.69937

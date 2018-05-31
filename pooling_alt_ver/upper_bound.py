@@ -19,7 +19,7 @@ def find_num_rolls(num_of_variants=6):
                 all_found = False
                 every_one_found = False
 
-        if every_one_found == True:
+        if every_one_found:
             break
 
     return num_of_rolls
