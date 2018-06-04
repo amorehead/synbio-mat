@@ -88,11 +88,19 @@ def recombine(top_wells, num_variants):
    
 def next_gens(num_wells, pool):
    pool_elements = []
-   #Rounding errors??
    for i in pool:
       for j in range(int(round(i[1]*100))):
          pool_elements.append(i[0])
+   #The following is to account for rounding errors above.
+   if(len(pool_elements)!=100):
+      if len(pool_elements) >100:
+         while len(pool_elements)>100:
+            del pool_elements[np.random.randint(len(pool_elements))]
+      else:
+         while len(pool_elements)<100:
+            pool_elements.append(pool[np.random.randint(len(pool))][0])
    random.shuffle(pool_elements)
+   print pool_elements
    
    next_gen = []
    wells_left = num_wells
@@ -132,7 +140,11 @@ def next_gens(num_wells, pool):
          
    
 if __name__ == "__main__":
+   #If you alter the number of variants, you also have to alter
+   #this brightness array so that each variant has a brightness that 
+   #is associated with it.   
    num_variants = 6
+   brightness = [[0,0],[1,1], [2,.9], [3,.1], [4,.15], [5,.2], [6,.3]]   
    
    #Can alter the number of wells to see
    #how many iterations are expected to converge.
@@ -141,14 +153,10 @@ if __name__ == "__main__":
    #With 35 wells, the number of iterations is closer to 
    #5.
    #Number of iterations is representative of # of generations.
-   
    num_wells = 35
    
-   
-   brightness = [[0,0],[1,1], [2,.9], [3,.1], [4,.15], [5,.2], [6,.3]]
    iteration = 0
-   
-   for z in range(10):
+   for z in range(20):
       gen = first_gen(num_wells, num_variants,[])
       well_brightnesses = np.asarray(determine_brightness1(brightness,gen))
       
@@ -188,6 +196,6 @@ if __name__ == "__main__":
          print "Top wells: ", top_wells
          print "Highest well brightness: ", max(well_brightnesses) 
    
-   print "Average # of iterations: ", float(iteration)/10
+   print "Average # of iterations: ", float(iteration)/20
    
    
