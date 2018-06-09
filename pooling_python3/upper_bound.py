@@ -25,14 +25,17 @@ def find_num_rolls(num_of_variants=6):
     return num_of_rolls
 
 
-def find_upper_bound(num_of_variants=6, num_samples=1000, upper_bound=0.95):
+def find_upper_bound(num_of_variants=6, num_samples=100000, upper_bound=0.95):
     roll_list = []
     for i in range(num_samples):
         roll_list.append(find_num_rolls(num_of_variants))
 
     mean_of_rolls = np.mean(roll_list)
     std_dev = np.std(roll_list)
-    upper_bound = mean_of_rolls + spsts.invgauss.std(0.95) * std_dev / num_samples ** 0.5
+    upper_bound = mean_of_rolls + spsts.invgauss.std(upper_bound) * std_dev / num_samples ** 0.5
 
     print(upper_bound)
     return upper_bound
+
+
+find_upper_bound()

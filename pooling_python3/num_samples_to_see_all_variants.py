@@ -19,7 +19,7 @@ def take_sample(found_variants, num_wells, num_variants):
 
 if __name__ == "__main__":
     num_variants = int(input("Please enter a desired number of variants: "))
-    num_samples = 100000 * num_variants
+    num_samples = 2 * num_variants if num_variants >= 50000 else 100000
 
     for i in range(num_samples):
         take_sample([], 0, num_variants)
