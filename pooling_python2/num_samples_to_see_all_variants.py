@@ -11,6 +11,7 @@ def take_sample(found_variants, num_wells, num_variants):
     for i in range(1, num_variants + 1):
         if i not in found_variants:
             all_found = False
+            break
     if all_found:
         num_wells_list.append(num_wells)
     else:

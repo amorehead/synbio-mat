@@ -6,7 +6,7 @@ import random
 def first_gen(num_wells, num_variants, plate):
     pool = []
     for i in range(1, num_variants + 1):
-        for j in range(100 / num_variants):
+        for j in range(100 // num_variants):
             pool.append(i)
     if len(pool) < 100:
         for i in range(100 - len(pool)):
@@ -16,7 +16,7 @@ def first_gen(num_wells, num_variants, plate):
     plate = []
     for i in range(num_wells):
         well = []
-        for j in range(100 / num_wells):
+        for j in range(100 // num_wells):
             selection = np.random.randint(len(pool))
             well.append(pool[selection])
             del pool[selection]
