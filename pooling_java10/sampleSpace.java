@@ -1,15 +1,17 @@
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Scanner;
-import java.util.Set;
-
 /*
  Alex Morehead
  6/10/2018
 
  This is a program that finds the number of necessary
  samples to see all possible variants at least once.
+
+  Credit goes to eledman (Elise Edman) for the original solution to this problem.
 */
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.Set;
 
 public class sampleSpace {
 
