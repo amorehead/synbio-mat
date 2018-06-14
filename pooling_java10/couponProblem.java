@@ -13,7 +13,7 @@ import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
 
-public class sampleSpace {
+public class couponProblem {
 
     // This is a global variable which will be referenced repeatedly during the execution of this program.
     private static ArrayList<Integer> numberOfWellsList = new ArrayList<>();
