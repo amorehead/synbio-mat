@@ -1,6 +1,6 @@
 /*
  Alex Morehead
- 6/27/2018
+ 6/29/2018
 
  This is a program that finds the number of necessary
  samples to see all possible variants at least once.
@@ -23,18 +23,26 @@ public class recursiveCouponProblem {
     /* This is a function that calculates the average number of
      samples needed to see all possible variants at least once. */
     private static void findAverageNumberOfWells() {
+
+        // This creates a Scanner object for us to receive input from the user.
         Scanner input = new Scanner(System.in);
+
+        // This defines how many variants we will be using.
         System.out.print("Please enter a desired number of variants: ");
         int numberOfVariants = input.nextInt();
+
+        // This defines how many samples will be taken to find the average number of wells.
+        System.out.print("Please enter a desired number of samples (A.K.A. iterations): ");
+        int numberOfIterations = input.nextInt();
 
         // This is to keep track of how much time the computation takes to complete.
         long tStart = System.currentTimeMillis();
 
-        // This defines how many samples will be taken to find the average number of wells.
-        int numberOfIterations = (numberOfVariants >= 50000) ? 2 * numberOfVariants : 100000;
-
+        // This finds the number of wells for the number of iterations previously specified.
         for (int i = 0; i < numberOfIterations; i++)
             findNumberOfWells(new ArrayList<>(), 0, numberOfVariants);
+
+        // This averages the number of wells for each iteration.
         int total = numberOfWellsList.stream().mapToInt(i -> i).sum();
         int averageNumberOfSamples = total / numberOfIterations;
         System.out.println("The average number of wells needed to see all variants at least once is "

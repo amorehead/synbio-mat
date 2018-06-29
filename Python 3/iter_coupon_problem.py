@@ -26,25 +26,28 @@ def find_num_of_wells(num_of_variants=6):
 
 # This is an experimental function for finding the upper bound of samples given integer variants.
 def find_upper_bound(num_of_variants=6, num_of_iterations=100000, upper_bound=0.95):
-    sample_list = []
     for i in range(num_of_iterations):
-        sample_list.append(find_num_of_wells(num_of_variants))
+        find_num_of_wells(num_of_variants)
 
-    mean_of_samples = np.mean(sample_list)
-    std_dev = np.std(sample_list)
+    sample_list_array = np.array(num_of_wells_list)
+    mean_of_samples = np.mean(sample_list_array)
+    print("The mean of the samples is", mean_of_samples)
+    std_dev = np.std(sample_list_array)
+    print("The standard deviation of the samples is", std_dev)
     upper_bound = mean_of_samples + sps.invgauss.std(upper_bound) * std_dev / num_of_iterations ** 0.5
 
-    print(upper_bound)
+    print("The upper bound of the samples is", upper_bound)
     return upper_bound
 
 
 # This is our mainline for running this script.
 if __name__ == "__main__":
-    num_variants = int(input("Please enter a desired number of variants: "))
-    num_of_iterations = 2 * num_variants if num_variants >= 50000 else 100000
+
+    num_of_variants = int(input("Please enter a desired number of variants: "))
+    num_of_iterations = int(input("Please enter a desired number of samples (A.K.A. iterations): "))
 
     for i in range(num_of_iterations):
-        find_num_of_wells(num_variants)
+        find_num_of_wells(num_of_variants)
     total_num_of_wells = sum(num_of_wells_list)
     print("The average number of wells needed to see all variants at least once is {0}.".format(
         float(total_num_of_wells) / num_of_iterations))
