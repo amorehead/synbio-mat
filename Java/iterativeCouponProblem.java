@@ -1,6 +1,6 @@
 /*
  Alex Morehead
- 6/29/2018
+ 7/1/2018
 
  This is a program that finds the number of necessary
  samples to see all possible variants at least once.
@@ -8,6 +8,7 @@
   Credit goes to eledman (Elise Edman) for the original solution to this problem.
 */
 
+import java.text.NumberFormat;
 import java.util.*;
 
 public class iterativeCouponProblem {
@@ -45,7 +46,8 @@ public class iterativeCouponProblem {
         // This averages the number of wells for each iteration.
         int total = numberOfWellsList.stream().mapToInt(i -> i).sum();
         int averageNumberOfSamples = total / numberOfIterations;
-        System.out.printf("The average number of wells needed to see all variants at least once is %,4d.", averageNumberOfSamples);
+        String averageNumberOfSamplesString = NumberFormat.getIntegerInstance().format(averageNumberOfSamples);
+        System.out.print("The average number of wells needed to see all variants at least once is " + averageNumberOfSamplesString + ".");
 
         // This is to allow us to show the user how long the computation took.
         long tEnd = System.currentTimeMillis();
@@ -55,14 +57,15 @@ public class iterativeCouponProblem {
             System.out.printf("\nThe number of hours it took to perform this computation was %,4.2f.", (elapsedSeconds / 3600));
         else if (elapsedSeconds >= 60)
             System.out.printf("\nThe number of minutes it took to perform this computation was %,4.2f.", (elapsedSeconds / 60));
-        System.out.printf("\nThe number of seconds it took to perform this computation was %,4.2f.", elapsedSeconds);
+        else
+            System.out.printf("\nThe number of seconds it took to perform this computation was %,4.2f.", elapsedSeconds);
     }
 
     /* This is a helper function that picks a random variant, adds
      it to the list of variants already found, and then checks to
      see whether or not all possible variants have been seen. */
     private static void findNumberOfWells(int numberOfVariants) {
-        List<Integer> foundVariants = new ArrayList<>();
+        Set<Integer> foundVariants = new HashSet<>();
         int numberOfWells = 0;
         boolean allFound = false;
 

@@ -6,7 +6,7 @@ num_of_wells_list = []
 
 # This is a function that will find the number of wells needed to see all possible variants.
 def find_num_of_wells(found_variants, num_of_wells, num_of_variants):
-    found_variants.append(np.random.randint(1, num_of_variants + 1))
+    found_variants.add(np.random.randint(1, num_of_variants + 1))
     num_of_wells += 1
     all_found = True
 
@@ -23,7 +23,7 @@ def find_num_of_wells(found_variants, num_of_wells, num_of_variants):
 # This is an experimental function for finding the upper bound of samples given integer variants.
 def find_upper_bound(num_of_variants=6, num_of_iterations=100000, upper_bound=0.95):
     for i in range(num_of_iterations):
-        find_num_of_wells([], 0, num_of_variants)
+        find_num_of_wells(set(), 0, num_of_variants)
 
     sample_list_array = np.array(num_of_wells_list)
     mean_of_samples = np.mean(sample_list_array)
@@ -41,7 +41,7 @@ if __name__ == "__main__":
     num_of_iterations = int(input("Please enter a desired number of samples (A.K.A. iterations): "))
 
     for i in range(num_of_iterations):
-        find_num_of_wells([], 0, num_variants)
+        find_num_of_wells(set(), 0, num_variants)
     total_num_of_wells = sum(num_of_wells_list)
     print("The average number of wells needed to see all variants at least once is {0}.".format(
         float(total_num_of_wells) / num_of_iterations))

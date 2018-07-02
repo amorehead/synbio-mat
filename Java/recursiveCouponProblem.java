@@ -1,6 +1,6 @@
 /*
  Alex Morehead
- 6/29/2018
+ 7/1/2018
 
  This is a program that finds the number of necessary
  samples to see all possible variants at least once.
@@ -8,6 +8,7 @@
   Credit goes to eledman (Elise Edman) for the original solution to this problem.
 */
 
+import java.text.NumberFormat;
 import java.util.*;
 
 public class recursiveCouponProblem {
@@ -40,29 +41,30 @@ public class recursiveCouponProblem {
 
         // This finds the number of wells for the number of iterations previously specified.
         for (int i = 0; i < numberOfIterations; i++)
-            findNumberOfWells(new ArrayList<>(), 0, numberOfVariants);
+            findNumberOfWells(new HashSet<>(), 0, numberOfVariants);
 
         // This averages the number of wells for each iteration.
         int total = numberOfWellsList.stream().mapToInt(i -> i).sum();
         int averageNumberOfSamples = total / numberOfIterations;
-        System.out.println("The average number of wells needed to see all variants at least once is "
-                + averageNumberOfSamples + ".");
+        String averageNumberOfSamplesString = NumberFormat.getIntegerInstance().format(averageNumberOfSamples);
+        System.out.print("The average number of wells needed to see all variants at least once is " + averageNumberOfSamplesString + ".");
 
         // This is to allow us to show the user how long the computation took.
         long tEnd = System.currentTimeMillis();
         long tDelta = tEnd - tStart;
         double elapsedSeconds = tDelta / 1000.0;
         if (elapsedSeconds >= 3600)
-            System.out.println("The number of hours it took to perform this computation: " + elapsedSeconds / 3600);
+            System.out.printf("\nThe number of hours it took to perform this computation was %,4.2f.", (elapsedSeconds / 3600));
         else if (elapsedSeconds >= 60)
-            System.out.println("The number of minutes it took to perform this computation: " + elapsedSeconds / 60);
-        System.out.println("The number of seconds it took to perform this computation: " + elapsedSeconds);
+            System.out.printf("\nThe number of minutes it took to perform this computation was %,4.2f.", (elapsedSeconds / 60));
+        else
+            System.out.printf("\nThe number of seconds it took to perform this computation was %,4.2f.", elapsedSeconds);
     }
 
     /* This is a helper function that picks a random variant, adds
      it to the list of variants already found, and then checks to
      see whether or not all possible variants have been seen. */
-    private static void findNumberOfWells(List<Integer> foundVariants, int numberOfWells, int numberOfVariants) {
+    private static void findNumberOfWells(Set<Integer> foundVariants, int numberOfWells, int numberOfVariants) {
         foundVariants.add((int) (Math.random() * numberOfVariants) + 1);
         numberOfWells++;
         boolean allFound = true;
