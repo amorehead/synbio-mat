@@ -13,8 +13,13 @@ import java.util.*;
 
 public class iterativeCouponProblem {
 
-    // This is a global variable which will be referenced repeatedly during the execution of this program.
-    private static List<Integer> numberOfWellsList = new ArrayList<>();
+    /* This is a global list that will be referenced
+    repeatedly during the execution of this program. */
+    private static List<Double> numberOfWellsList = new ArrayList<>();
+
+    /* This is a global Random object which will be referenced
+     repeatedly during the execution of this program. */
+    private static Random randInt = new Random();
 
     // This is our main method.
     public static void main(String[] args) {
@@ -44,21 +49,20 @@ public class iterativeCouponProblem {
             findNumberOfWells(numberOfVariants);
 
         // This averages the number of wells for each iteration.
-        int total = numberOfWellsList.stream().mapToInt(i -> i).sum();
-        int averageNumberOfSamples = total / numberOfIterations;
-        String averageNumberOfSamplesString = NumberFormat.getIntegerInstance().format(averageNumberOfSamples);
-        System.out.print("The average number of wells needed to see all variants at least once is " + averageNumberOfSamplesString + ".");
+        double total = numberOfWellsList.stream().mapToDouble(i -> i).sum();
+        double averageNumberOfSamples = total / numberOfIterations;
+        System.out.printf("The average number of wells needed to see all variants at least once is %,4.2f.", averageNumberOfSamples);
 
         // This is to allow us to show the user how long the computation took.
         long tEnd = System.currentTimeMillis();
         long tDelta = tEnd - tStart;
         double elapsedSeconds = tDelta / 1000.0;
         if (elapsedSeconds >= 3600)
-            System.out.printf("\nThe number of hours it took to perform this computation was %,4.2f.", (elapsedSeconds / 3600));
+            System.out.printf("\nThe amount of time it took to perform this computation was %,4.2f hours.", (elapsedSeconds / 3600));
         else if (elapsedSeconds >= 60)
-            System.out.printf("\nThe number of minutes it took to perform this computation was %,4.2f.", (elapsedSeconds / 60));
+            System.out.printf("\nThe amount of time it took to perform this computation was %,4.2f minutes.", (elapsedSeconds / 60));
         else
-            System.out.printf("\nThe number of seconds it took to perform this computation was %,4.2f.", elapsedSeconds);
+            System.out.printf("\nThe amount of time it took to perform this computation was %,4.2f seconds.", elapsedSeconds);
     }
 
     /* This is a helper function that picks a random variant, adds
@@ -66,11 +70,11 @@ public class iterativeCouponProblem {
      see whether or not all possible variants have been seen. */
     private static void findNumberOfWells(int numberOfVariants) {
         Set<Integer> foundVariants = new HashSet<>();
-        int numberOfWells = 0;
+        double numberOfWells = 0;
         boolean allFound = false;
 
         while (!allFound) {
-            foundVariants.add((int) (Math.random() * numberOfVariants) + 1);
+            foundVariants.add(randInt.nextInt(numberOfVariants) + 1);
             numberOfWells++;
             allFound = true;
 
