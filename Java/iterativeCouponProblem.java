@@ -53,6 +53,10 @@ public class iterativeCouponProblem {
         double averageNumberOfSamples = total / numberOfIterations;
         System.out.printf("The average number of wells needed to see all variants at least once is %,4.2f.", averageNumberOfSamples);
 
+        // This finds the standard deviation of the well counts.
+        double standardDeviationOfWellCount = findStandardDeviation(numberOfWellsList);
+        System.out.printf("\nThe standard deviation in the list of wells is %,4.2f.", standardDeviationOfWellCount);
+
         // This is to allow us to show the user how long the computation took.
         long tEnd = System.currentTimeMillis();
         long tDelta = tEnd - tStart;
@@ -94,6 +98,20 @@ public class iterativeCouponProblem {
         // This is where we add the current run's number of wells to the list of well totals.
         numberOfWellsList.add(numberOfWells);
 
+    }
+
+    private static <T extends Comparable> double findStandardDeviation(List<Double> list) {
+        double powerSum1 = 0;
+        double powerSum2 = 0;
+        double standardDeviation = 0;
+
+        for (int i = 0; i < list.size(); i++) {
+            powerSum1 += list.get(i);
+            powerSum2 += Math.pow(list.get(i), 2);
+            standardDeviation = Math.sqrt(i * powerSum2 - Math.pow(powerSum1, 2)) / i;
+        }
+
+        return standardDeviation;
     }
 
 }
