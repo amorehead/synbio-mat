@@ -11,6 +11,11 @@ def find_num_of_wells(num_of_variants=6):
     num_of_wells = 0
     all_found = False
 
+    # This allows us to skip the first "number_of_variants" amount of variables.
+    for i in range(num_of_variants):
+        found_variants.add(np.random.randint(1, num_of_variants + 1))
+    num_of_wells = num_of_variants
+
     while not all_found:
         found_variants.add(np.random.randint(1, num_of_variants + 1))
         num_of_wells += 1

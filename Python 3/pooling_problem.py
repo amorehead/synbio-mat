@@ -3,28 +3,28 @@ import random
 
 
 # creates the first generation
-def first_gen(num_wells, num_variants, plate):
+def first_gen(num_of_wells, num_of_variants, plate):
     pool = []
-    for i in range(1, num_variants + 1):
-        for j in range(100 // num_variants):
+    for i in range(1, num_of_variants + 1):
+        for j in range(100 // num_of_variants):
             pool.append(i)
     if len(pool) < 100:
         for i in range(100 - len(pool)):
-            pool.append(np.random.randint(num_variants + 1))
+            pool.append(np.random.randint(num_of_variants + 1))
     random.shuffle(pool)
 
     plate = []
-    for i in range(num_wells):
+    for i in range(num_of_wells):
         well = []
-        for j in range(100 // num_wells):
+        for j in range(100 // num_of_wells):
             selection = np.random.randint(len(pool))
             well.append(pool[selection])
             del pool[selection]
         plate.append(well)
 
-    if ((100 / num_wells) * num_wells) < 100:
-        for i in range(100 - ((100 / num_wells) * num_wells)):
-            rand_well = np.random.randint(num_wells)
+    if ((100 / num_of_wells) * num_of_wells) < 100:
+        for i in range(100 - ((100 / num_of_wells) * num_of_wells)):
+            rand_well = np.random.randint(num_of_wells)
             selection = np.random.randint(len(pool))
             plate[rand_well].append(pool[selection])
             del pool[selection]
@@ -62,7 +62,7 @@ def determine_brightness2(brightness, plate):
 # chooses the top 10% brightest wells
 def choose_wells(plate, well_brightnesses):
     ordered_brightnesses = np.sort(well_brightnesses)
-    min_brightness = ordered_brightnesses[int(np.ceil(num_wells * .9)) - 1]
+    min_brightness = ordered_brightnesses[int(np.ceil(num_of_wells * .9)) - 1]
     top_wells = []
     for i in range(len(well_brightnesses)):
         if well_brightnesses[i] >= min_brightness:
@@ -87,7 +87,7 @@ def recombine(top_wells, num_variants):
     return pool
 
 
-def next_gens(num_wells, pool):
+def next_gens(num_of_wells, pool):
     pool_elements = []
     for i in pool:
         for j in range(int(round(i[1] * 100))):
@@ -104,10 +104,10 @@ def next_gens(num_wells, pool):
     print(pool_elements)
 
     next_gen = []
-    wells_left = num_wells
+    wells_left = num_of_wells
     total = 100
     num_individuals = 0
-    for i in range(num_wells):
+    for i in range(num_of_wells):
         single_well = [0]
         # Assuming good enough distribution throughout the solution
         if ((total / wells_left) - 3 <= 0):
@@ -133,7 +133,7 @@ def next_gens(num_wells, pool):
 
     if num_individuals < 100:
         while len(pool_elements) != 0:
-            well = np.random.randint(0, num_wells)
+            well = np.random.randint(0, num_of_wells)
             random_sample = np.random.randint(len(pool_elements))
             next_gen[well].append(pool_elements[random_sample])
             del pool_elements[random_sample]
@@ -144,8 +144,9 @@ if __name__ == "__main__":
     # If you alter the number of variants, you also have to alter
     # this brightness array so that each variant has a brightness that
     # is associated with it.
-    num_variants = 6
-    brightness = [[0, 0], [1, 1], [2, .9], [3, .1], [4, .15], [5, .2], [6, .3]]
+    num_of_variants = int(input("Please enter a desired number of variants: "))
+    # old: brightness = [[0, 0], [1, 1], [2, .9], [3, .1], [4, .15], [5, .2], [6, .3]]
+    brightness = [[i, np.random.random()] for i in range(num_of_variants + 1)]
 
     # Can alter the number of wells to see
     # how many iterations are expected to converge.
@@ -154,15 +155,15 @@ if __name__ == "__main__":
     # With 35 wells, the number of iterations is closer to
     # 5.
     # Number of iterations is representative of # of generations.
-    num_wells = 35
+    num_of_wells = 35
 
     iteration = 0
     for z in range(20):
-        gen = first_gen(num_wells, num_variants, [])
+        gen = first_gen(num_of_wells, num_of_variants, [])
         well_brightnesses = np.asarray(determine_brightness1(brightness, gen))
 
-        num_iterations = 1
-        print("Iteration: ", num_iterations)
+        num_of_iterations = 1
+        print("Iteration: ", num_of_iterations)
         print("Highest well brightness: ", max(well_brightnesses))
 
         top_wells = choose_wells(gen, well_brightnesses)
@@ -171,7 +172,7 @@ if __name__ == "__main__":
         done = False
 
         while not done:
-            num_iterations += 1
+            num_of_iterations += 1
 
             for i in top_wells:
                 all_high = True
@@ -180,16 +181,16 @@ if __name__ == "__main__":
                         all_high = False
                 if all_high:
                     done = True
-                    iteration += num_iterations
+                    iteration += num_of_iterations
                     break
             if done:
                 break
 
-            pool = recombine(top_wells, num_variants)
+            pool = recombine(top_wells, num_of_variants)
             print("Pool: ", pool)
-            gen = next_gens(num_wells, pool)
+            gen = next_gens(num_of_wells, pool)
 
-            print("Iteration: ", num_iterations)
+            print("Iteration: ", num_of_iterations)
             print("New generation: ", gen)
             well_brightnesses = np.asarray(determine_brightness2(brightness, gen))
             # print "Brightnesses in each well: ", well_brightnesses
