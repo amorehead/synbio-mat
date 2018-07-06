@@ -1,12 +1,18 @@
 /*
  Alex Morehead
- 7/1/2018
+ 7/6/2018
 
  This is a program that finds the number of necessary
  samples to see all possible variants at least once.
+
+  Credit goes to eledman (Elise Edman) for the original solution to this problem
+  as well as to the Department of Information Sciences at the University of Milan
+  and Apache for the creation of the random number generator library used in this program.
 */
 
 import java.util.*;
+
+import it.unimi.dsi.util.*;
 
 public class iterativeCouponProblem {
 
@@ -16,7 +22,7 @@ public class iterativeCouponProblem {
 
     /* This is a global SplittableRandom object which will be referenced
      repeatedly during the execution of this program. */
-    private static SplittableRandom randInt = new SplittableRandom();
+    private static XorShift1024StarPhiRandom randInt = new XorShift1024StarPhiRandom();
 
     // This is our main method.
     public static void main(String[] args) {
@@ -51,10 +57,11 @@ public class iterativeCouponProblem {
         System.out.printf("The average number of wells needed to see all variants at least once is %,4.2f.", averageNumberOfSamples);
 
         // This finds the standard deviation of the well counts.
-        if ((double) numberOfVariants / (double) numberOfIterations <= 6) {
-            double standardDeviationOfWellCount = findStandardDeviation(numberOfWellsList);
+        double standardDeviationOfWellCount = findStandardDeviation(numberOfWellsList);
+        if (standardDeviationOfWellCount >= 0)
             System.out.printf("\nThe standard deviation in the list of wells is %,4.2f.", standardDeviationOfWellCount);
-        }
+        else System.out.print("\nThe standard deviation in the list of wells could not be computed.");
+
         // This is to allow us to show the user how long the computation took.
         long tEnd = System.currentTimeMillis();
         long tDelta = tEnd - tStart;
