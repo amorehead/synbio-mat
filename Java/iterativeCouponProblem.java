@@ -4,11 +4,8 @@
 
  This is a program that finds the number of necessary
  samples to see all possible variants at least once.
-
-  Credit goes to eledman (Elise Edman) for the original solution to this problem.
 */
 
-import java.text.NumberFormat;
 import java.util.*;
 
 public class iterativeCouponProblem {
@@ -17,9 +14,9 @@ public class iterativeCouponProblem {
     repeatedly during the execution of this program. */
     private static List<Double> numberOfWellsList = new ArrayList<>();
 
-    /* This is a global Random object which will be referenced
+    /* This is a global SplittableRandom object which will be referenced
      repeatedly during the execution of this program. */
-    private static Random randInt = new Random();
+    private static SplittableRandom randInt = new SplittableRandom();
 
     // This is our main method.
     public static void main(String[] args) {
@@ -54,9 +51,10 @@ public class iterativeCouponProblem {
         System.out.printf("The average number of wells needed to see all variants at least once is %,4.2f.", averageNumberOfSamples);
 
         // This finds the standard deviation of the well counts.
-        double standardDeviationOfWellCount = findStandardDeviation(numberOfWellsList);
-        System.out.printf("\nThe standard deviation in the list of wells is %,4.2f.", standardDeviationOfWellCount);
-
+        if ((double) numberOfVariants / (double) numberOfIterations <= 6) {
+            double standardDeviationOfWellCount = findStandardDeviation(numberOfWellsList);
+            System.out.printf("\nThe standard deviation in the list of wells is %,4.2f.", standardDeviationOfWellCount);
+        }
         // This is to allow us to show the user how long the computation took.
         long tEnd = System.currentTimeMillis();
         long tDelta = tEnd - tStart;
@@ -100,7 +98,7 @@ public class iterativeCouponProblem {
 
     }
 
-    private static <T extends Comparable> double findStandardDeviation(List<Double> list) {
+    private static double findStandardDeviation(List<Double> list) {
         double powerSum1 = 0;
         double powerSum2 = 0;
         double standardDeviation = 0;

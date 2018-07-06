@@ -8,7 +8,6 @@
   Credit goes to eledman (Elise Edman) for the original solution to this problem.
 */
 
-import java.text.NumberFormat;
 import java.util.*;
 
 public class recursiveCouponProblem {
@@ -19,7 +18,7 @@ public class recursiveCouponProblem {
 
     /* This is a global Random object which will be referenced
      repeatedly during the execution of this program. */
-    private static Random randInt = new Random();
+    private static SplittableRandom randInt = new SplittableRandom();
 
     // This is our main method.
     public static void main(String[] args) {
@@ -53,6 +52,11 @@ public class recursiveCouponProblem {
         double averageNumberOfSamples = total / numberOfIterations;
         System.out.printf("The average number of wells needed to see all variants at least once is %,4.2f.", averageNumberOfSamples);
 
+        // This finds the standard deviation of the well counts.
+        if ((double) numberOfVariants / (double) numberOfIterations <= 6) {
+            double standardDeviationOfWellCount = findStandardDeviation(numberOfWellsList);
+            System.out.printf("\nThe standard deviation in the list of wells is %,4.2f.", standardDeviationOfWellCount);
+        }
         // This allows us to show the user how long the computation took.
         long tEnd = System.currentTimeMillis();
         long tDelta = tEnd - tStart;
@@ -82,6 +86,20 @@ public class recursiveCouponProblem {
             numberOfWellsList.add(numberOfWells);
         else
             findNumberOfWells(foundVariants, numberOfWells, numberOfVariants);
+    }
+
+    private static double findStandardDeviation(List<Double> list) {
+        double powerSum1 = 0;
+        double powerSum2 = 0;
+        double standardDeviation = 0;
+
+        for (int i = 0; i < list.size(); i++) {
+            powerSum1 += list.get(i);
+            powerSum2 += Math.pow(list.get(i), 2);
+            standardDeviation = Math.sqrt(i * powerSum2 - Math.pow(powerSum1, 2)) / i;
+        }
+
+        return standardDeviation;
     }
 
 }
