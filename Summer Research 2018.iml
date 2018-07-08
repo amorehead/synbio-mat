@@ -2,7 +2,7 @@
 <module type="JAVA_MODULE" version="4">
   <component name="FacetManager">
     <facet type="Python" name="Python">
-      <configuration sdkName="" />
+      <configuration sdkName="Python 3.6" />
     </facet>
   </component>
   <component name="NewModuleRootManager">
@@ -15,5 +15,6 @@
     <orderEntry type="library" name="commons-math3-3.6.1" level="project" />
     <orderEntry type="library" name="dsiutils-2.5.1" level="project" />
     <orderEntry type="library" name="fastutil-8.2.1" level="project" />
+    <orderEntry type="library" name="Python 3.6 interpreter library" level="application" />
   </component>
 </module>

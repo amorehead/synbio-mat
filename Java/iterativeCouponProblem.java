@@ -1,18 +1,20 @@
 /*
  Alex Morehead
- 7/6/2018
+ 7/7/2018
 
  This is a program that finds the number of necessary
  samples to see all possible variants at least once.
 
   Credit goes to eledman (Elise Edman) for the original solution to this problem
   as well as to the Department of Information Sciences at the University of Milan
-  and Apache for the creation of the random number generator library used in this program.
+  and Apache for the creation of the random number generator library and statistics
+  packages used in this program.
 */
 
 import java.util.*;
 
 import it.unimi.dsi.util.*;
+import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 
 public class iterativeCouponProblem {
 
@@ -56,11 +58,15 @@ public class iterativeCouponProblem {
         double averageNumberOfSamples = total / numberOfIterations;
         System.out.printf("The average number of wells needed to see all variants at least once is %,4.2f.", averageNumberOfSamples);
 
+        // This is setup for being able to compute the standard deviation of the list of well counts.
+        DescriptiveStatistics stats = new DescriptiveStatistics();
+        for (Double numberOfWells : numberOfWellsList) stats.addValue(numberOfWells);
+
         // This finds the standard deviation of the well counts.
-        double standardDeviationOfWellCount = findStandardDeviation(numberOfWellsList);
+        double standardDeviationOfWellCount = stats.getStandardDeviation();
         if (standardDeviationOfWellCount >= 0)
-            System.out.printf("\nThe standard deviation in the list of wells is %,4.2f.", standardDeviationOfWellCount);
-        else System.out.print("\nThe standard deviation in the list of wells could not be computed.");
+            System.out.printf("\nThe standard deviation of the list of wells is %,4.2f.", standardDeviationOfWellCount);
+        else System.out.print("\nThe standard deviation of the list of wells could not be computed.");
 
         // This is to allow us to show the user how long the computation took.
         long tEnd = System.currentTimeMillis();
@@ -94,29 +100,21 @@ public class iterativeCouponProblem {
             allFound = true;
 
             // This checks to see if we have seen all variants.
-            for (int i = 1; i < numberOfVariants + 1; i++)
-                if (!foundVariants.contains(i))
-                    allFound = false;
-
+            if (foundVariants.size() < numberOfVariants)
+                allFound = false;
         }
 
         // This is where we add the current run's number of wells to the list of well totals.
         numberOfWellsList.add(numberOfWells);
-
     }
 
-    private static double findStandardDeviation(List<Double> list) {
-        double powerSum1 = 0;
-        double powerSum2 = 0;
-        double standardDeviation = 0;
-
-        for (int i = 0; i < list.size(); i++) {
-            powerSum1 += list.get(i);
-            powerSum2 += Math.pow(list.get(i), 2);
-            standardDeviation = Math.sqrt(i * powerSum2 - Math.pow(powerSum1, 2)) / i;
-        }
-
-        return standardDeviation;
+    /* This is an experimental method for finding the
+     standard deviation of a list of doubles given a mean value. */
+    private static double findStandardDeviation(List<Double> list, double mean) {
+        double squareSum = 0;
+        for (Double dbl : list) squareSum += Math.pow(dbl - mean, 2);
+        double meanOfDiffs = squareSum / list.size();
+        return Math.sqrt(meanOfDiffs);
     }
 
 }
