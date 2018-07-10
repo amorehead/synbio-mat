@@ -5,11 +5,19 @@
  This is a program that finds an "optimal"
  bracket for quiz-style tournaments having
  three teams compete simultaneously.
+
+ Credit goes to Google's Guava development
+ team for creating the set operation tools
+ used throughout the execution of this program.
 */
 
 package SchedulingProblem;
 
-import java.util.Scanner;
+import java.util.*;
+
+import java.util.stream.*;
+
+import com.google.common.collect.*;
 
 public class BracketMaker {
 
@@ -27,12 +35,23 @@ public class BracketMaker {
         System.out.print("Please enter a desired number of rooms: ");
         int numberOfRooms = input.nextInt();
 
-        // This finds the number of necessary time slots for the given previously-specified values.
+        // This finds the number of time slots needed for the previously-specified values.
         int realNumberOfTimeSlots = calcRealTimeSlots(numberOfTeams, numberOfQuizzes, numberOfRooms);
-        System.out.printf("The real number of time slots is %,d.", realNumberOfTimeSlots);
+        System.out.printf("\nThe real number of time slots is %,d.", realNumberOfTimeSlots);
 
+        // This finds the ideal number of time slots for the previously-specified values.
         int idealNumberOfTimeSlots = calcIdealTimeSlots(numberOfTeams);
-        System.out.printf("\nThe ideal number of time slots is %,d.", idealNumberOfTimeSlots);
+        System.out.printf("\nThe ideal number of time slots is %,d.\n", idealNumberOfTimeSlots);
+
+        // This initializes a set to be the same size as the "numberOfTeams".
+        List<Integer> teamIntegers = IntStream.range(1, numberOfTeams + 1)
+                .boxed().collect(Collectors.toList());
+        Set<Integer> teams = ImmutableSet.copyOf(teamIntegers);
+        Set<Set<Integer>> teamCombinations = Sets.powerSet(teams);
+
+        // This displays all possible team combinations.
+        for (Integer integer : teamIntegers)
+            System.out.print("\nTeam " + integer);
     }
 
     private static int calcIdealTimeSlots(int numberOfTeams) {
