@@ -1,6 +1,6 @@
 /*
  Alex Morehead
- 7/9/2018
+ 7/10/2018
 
  This is a program that finds an "optimal"
  bracket for quiz-style tournaments having
@@ -54,8 +54,8 @@ public class BracketMaker {
             System.out.print("\nTeam " + integer);
     }
 
+    // This is a function for finding the ideal number of time slots.
     private static int calcIdealTimeSlots(int numberOfTeams) {
-
         /* In a perfect round-robin scenario, the number of teams can
         determine the number of quizzes ((number of teams - 1) /2)
         and the number of rooms (number of teams / 3). */
@@ -67,7 +67,7 @@ public class BracketMaker {
 
     }
 
-    // This is a function for finding the number of necessary time slots.
+    // This is a function for finding the necessary number of time slots.
     private static int calcRealTimeSlots(int numberOfTeams, int numberOfQuizzes, int numberOfRooms) {
 
         // This defines an integer value to find the number of time slots needed.
