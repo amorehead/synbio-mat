@@ -61,7 +61,12 @@ if __name__ == "__main__":
     print("The number of preliminary time slots is {0}.".format(len(prelim_time_slots)))
 
     # This makes sure the union of any two sets in "prelim_time_slots" is not greater than 1.
-    idealIntersections = set.intersection(prelim_time_slots[0], prelim_time_slots[1])
+    undesirable_intersections = (prelim_time_slots[i] & prelim_time_slots[i + 1] for i in
+                                 range(len(prelim_time_slots) - 1) if
+                                 len(prelim_time_slots[i] & prelim_time_slots[i + 1]) > 1)
 
-    # This displays the list of finalized time slots.
-    print("The final time slots are {0}.".format(idealIntersections))
+    # This displays the undesirable team intersections.
+    print("The undesirable team intersections are {0}.".format(list(undesirable_intersections)))
+
+    # This displays the number of undesirable team intersections.
+    print("The number of undesirable team intersections is {0}.".format(len(list(undesirable_intersections))))
