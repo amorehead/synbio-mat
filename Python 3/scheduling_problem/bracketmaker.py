@@ -17,8 +17,8 @@ def calc_real_time_slots(number_of_teams, number_of_quizzes, number_of_rooms):
     number_of_matches = float((number_of_teams * number_of_quizzes)) / 3
 
     # This makes the number of time slots an integer by flooring the number if necessary.
-    return (number_of_matches // number_of_rooms) \
-        if (number_of_matches % 3 == 0) else (int(math.floor(number_of_matches)) // number_of_rooms)
+    return (math.ceil(number_of_matches / number_of_rooms)) \
+        if (number_of_matches % 3 == 0) else (int(math.ceil(number_of_matches)) // number_of_rooms)
 
 
 # This is a function for finding the ideal number of time slots.
