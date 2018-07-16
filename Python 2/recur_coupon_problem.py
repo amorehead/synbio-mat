@@ -12,7 +12,7 @@ import numpy as np
 import scipy.stats as sps
 
 global num_of_wells_list
-num_of_wells_list = []
+num_of_wells_list = list()
 
 
 # This is a function that will find the number of wells needed to see all possible variants.

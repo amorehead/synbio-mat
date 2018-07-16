@@ -199,7 +199,8 @@ if __name__ == "__main__":
             print("Pool: ", pool)
             gen = next_gens(num_of_wells, pool)
 
-            print("Iteration: ", num_iterations)
+            print("Iteration: ", iteration)
+            print("Number of iterations: ", num_iterations)
             print("New generation: ", gen)
             well_brightnesses = np.asarray(determine_brightness2(brightness, gen))
             # print "Brightnesses in each well: ", well_brightnesses

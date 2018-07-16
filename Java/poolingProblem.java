@@ -69,7 +69,8 @@ public class poolingProblem {
             System.out.println("Pool: " + pool);
             gen = findNextGens(numberOfWells, pool);
 
-            System.out.println("Iteration: " + numberOfIterations);
+            System.out.println("Iteration: " + iteration);
+            System.out.println("Number of iterations: " + numberOfIterations);
             System.out.println("New generation: " + gen);
             wellBrightnesses = determineBrightness2(brightness, gen);
             System.out.println("Brightnesses in each well: " + wellBrightnesses);

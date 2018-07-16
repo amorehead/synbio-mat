@@ -12,7 +12,7 @@ import numpy as np
 import scipy.stats as sps
 
 global num_of_wells_list
-num_of_wells_list = []
+num_of_wells_list = list()
 
 
 # This is a helper function that picks a random variant, adds
