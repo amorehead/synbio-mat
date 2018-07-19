@@ -40,6 +40,12 @@ def print_bracket(number_of_rooms, number_of_time_slots):
         print("", n)
 
 
+# This is a function that will yield all "n"-sized chunks of list "l".
+def find_chunks(l, n):
+    for i in range(0, len(l), n):
+        yield l[i:i + n]
+
+
 # This is our main method.
 if __name__ == "__main__":
     # This obtains necessary data from the user.
@@ -71,6 +77,21 @@ if __name__ == "__main__":
 
     # This displays the number of preliminary team matchups.
     print("The number of preliminary team matchups is {0}.".format(number_of_prelim_team_matchups))
+
+    # This finds triple pairings of teams from the original list of team integers.
+    triple_pairings = list(find_chunks(team_integers, 3))
+
+    # This initializes the list of time slots.
+    time_slots = [[] for i in range(number_of_rooms)]
+
+    # This populates the time slots of the tournament.
+    for i in range(number_of_rooms):
+        time_slots[i].append(triple_pairings)
+
+    # This prints out the filled time slots.
+    print("The time slots filled are {0}.".format(time_slots))
+
+    #                                       # Old, unused code #                                        #
 
     # # This makes sure the union of any two sets in "prelim_team_matchups" is not greater than 1.
     # undesirable_intersections = (prelim_team_matchups[i] & prelim_team_matchups[i + 1] for i in
@@ -111,6 +132,3 @@ if __name__ == "__main__":
     #
     # # This prints out our list of rooms.
     # print("The list of generated matchups for \"Room 1\" is {0}.".format(rooms))
-
-    # This creates our bracket and prints it out.
-    print_bracket(number_of_rooms, real_number_of_time_slots)

@@ -100,9 +100,9 @@ public class iterativeCouponProblem {
         boolean allFound = false;
 
         // This allows us to skip the first "numberOfVariants" amount of variables.
-        for (int i = 0; i < numberOfVariants * 10; i++)
+        for (int i = 0; i < numberOfVariants; i++)
             foundVariants.add(randInt.nextInt(numberOfVariants) + 1);
-        numberOfWells = numberOfVariants * 10;
+        numberOfWells = numberOfVariants;
 
         // This checks to make sure that we have seen all variants.
         while (!allFound) {
