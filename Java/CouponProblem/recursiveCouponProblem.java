@@ -1,4 +1,4 @@
-/*
+package CouponProblem;/*
  Alex Morehead
  7/19/2018
 
@@ -25,7 +25,7 @@ public class recursiveCouponProblem {
 
     /* This is a global list that will be referenced
     repeatedly during the execution of this program. */
-    private static final List<Double> numberOfWellsList = new ArrayList<>();
+    private static final List<Double> listOfSamples = new ArrayList<>();
 
     /* This is a global SplittableRandom object which will be referenced
      repeatedly during the execution of this program. */
@@ -33,12 +33,12 @@ public class recursiveCouponProblem {
 
     // This is our main method.
     public static void main(String[] args) {
-        findAverageNumberOfWells();
+        performComputations();
     }
 
     /* This is a function that calculates the average number of
      samples needed to see all possible variants at least once. */
-    private static void findAverageNumberOfWells() {
+    private static void performComputations() {
 
         // This creates a Scanner object for us to receive input from the user.
         Scanner input = new Scanner(System.in);
@@ -49,25 +49,25 @@ public class recursiveCouponProblem {
 
         // This defines how many samples will be taken to find the average number of wells.
         System.out.print("Please enter a desired number of samples (A.K.A. iterations): ");
-        int numberOfIterations = input.nextInt();
+        int totalNumberOfSamples = input.nextInt();
 
         // This is to keep track of how much time the computation takes to complete.
         long tStart = System.currentTimeMillis();
 
         // This finds the number of wells for the number of iterations previously specified.
-        for (int i = 0; i < numberOfIterations; i++)
+        for (int i = 0; i < totalNumberOfSamples; i++)
             findNumberOfWells(new HashSet<>(), 0, numberOfVariants);
 
         // This averages the number of wells for each iteration.
-        double total = numberOfWellsList.stream().mapToDouble(i -> i).sum();
-        double averageNumberOfSamples = total / numberOfIterations;
-        System.out.printf("The average number of wells needed to see all variants at least once is %,4.2f.", averageNumberOfSamples);
+        double sumOfGeneratedSamples = listOfSamples.stream().mapToDouble(i -> i).sum();
+        double averageNumberOfWells = sumOfGeneratedSamples / totalNumberOfSamples;
+        System.out.printf("The average number of wells needed to see all variants at least once is %,4.2f.", averageNumberOfWells);
 
         // This finds the standard deviation of the well counts.
-        double standardDeviationOfWellCount = findStandardDeviation(numberOfWellsList, averageNumberOfSamples);
-        if (standardDeviationOfWellCount >= 0)
-            System.out.printf("\nThe standard deviation of the list of wells is %,4.2f.", standardDeviationOfWellCount);
-        else System.out.print("\nThe standard deviation of the list of wells could not be computed.");
+        double standardDeviationOfSamples = findStandardDeviation(listOfSamples, averageNumberOfWells);
+        if (standardDeviationOfSamples >= 0)
+            System.out.printf("\nThe standard deviation of the list of samples is %,4.2f.", standardDeviationOfSamples);
+        else System.out.print("\nThe standard deviation of the list of samples could not be computed.");
 
         // This allows us to show the user how long the computation took.
         long tEnd = System.currentTimeMillis();
@@ -95,7 +95,7 @@ public class recursiveCouponProblem {
 
         if (allFound)
             // This is where we add the current run's number of wells to the list of well totals.
-            numberOfWellsList.add(numberOfWells);
+            listOfSamples.add(numberOfWells);
         else
             findNumberOfWells(foundVariants, numberOfWells, numberOfVariants);
     }
