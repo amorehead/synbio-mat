@@ -1,41 +1,35 @@
 /*
  Alex Morehead
- 7/10/2018
+ 7/19/2018
 
- This is a program that finds the number of necessary
- samples to see all possible variants at least once.
+ This is a program that recursively finds the number of
+ necessary samples to see all possible variants at least once.
 
- Credit goes to eledman (Elise Edman) for the original solution to this problem
- as well as to the Department of Information Sciences at the University of Milan
- and Apache for the creation of the random number generator library and statistics
- packages used in this program.
+ Credit goes to eledman (Elise Edman) for the original solution to this problem.
 
  Glossary:
 
- 1. "Variants" can be thought of as representing the quantity "n",
-  the number of sides on an n-sided die.
+ 1. "Variants" can be thought of as the quantity "n",
+  representing the number of sides on an n-sided die.
 
  2. "Wells" can be thought of as representing the individual rolls of a die.
 
  3. "Samples" or "iterations" can be thought of as representing the number
  of times an n-sided die was rolled, or rather will be rolled, until all
- sides of the die were seen at least once.
+ sides of the die were/are seen at least once.
 */
 
 import java.util.*;
-
-import it.unimi.dsi.util.*;
-import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 
 public class recursiveCouponProblem {
 
     /* This is a global list that will be referenced
     repeatedly during the execution of this program. */
-    private static List<Double> numberOfWellsList = new ArrayList<>();
+    private static final List<Double> numberOfWellsList = new ArrayList<>();
 
-    /* This is a random number generator that will be
-     referenced repeatedly during the execution of this program. */
-    private static XorShift1024StarPhiRandom randInt = new XorShift1024StarPhiRandom();
+    /* This is a global SplittableRandom object which will be referenced
+     repeatedly during the execution of this program. */
+    private static final SplittableRandom randomInt = new SplittableRandom();
 
     // This is our main method.
     public static void main(String[] args) {
@@ -69,12 +63,8 @@ public class recursiveCouponProblem {
         double averageNumberOfSamples = total / numberOfIterations;
         System.out.printf("The average number of wells needed to see all variants at least once is %,4.2f.", averageNumberOfSamples);
 
-        // This is setup for being able to compute the standard deviation of the list of well counts.
-        DescriptiveStatistics stats = new DescriptiveStatistics();
-        for (Double numberOfWells : numberOfWellsList) stats.addValue(numberOfWells);
-
         // This finds the standard deviation of the well counts.
-        double standardDeviationOfWellCount = stats.getStandardDeviation();
+        double standardDeviationOfWellCount = findStandardDeviation(numberOfWellsList, averageNumberOfSamples);
         if (standardDeviationOfWellCount >= 0)
             System.out.printf("\nThe standard deviation of the list of wells is %,4.2f.", standardDeviationOfWellCount);
         else System.out.print("\nThe standard deviation of the list of wells could not be computed.");
@@ -95,14 +85,16 @@ public class recursiveCouponProblem {
      it to the list of variants already found, and then checks to
      see whether or not all possible variants have been seen. */
     private static void findNumberOfWells(Set<Integer> foundVariants, double numberOfWells, int numberOfVariants) {
-        foundVariants.add(randInt.nextInt(numberOfVariants) + 1);
+        foundVariants.add(randomInt.nextInt(numberOfVariants) + 1);
         numberOfWells++;
         boolean allFound = true;
 
+        // This checks to see if we have seen at least the minimum number of variants.
         if (foundVariants.size() < numberOfVariants)
             allFound = false;
 
         if (allFound)
+            // This is where we add the current run's number of wells to the list of well totals.
             numberOfWellsList.add(numberOfWells);
         else
             findNumberOfWells(foundVariants, numberOfWells, numberOfVariants);
