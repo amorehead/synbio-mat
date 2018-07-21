@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="Variant Sampler:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Variant_Sampler_jar</output-path>
+    <root id="archive" name="Variant Sampler.jar">
+      <element id="module-output" name="Summer Research 2018" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/google/guava/guava/18.0/guava-18.0.jar" path-in-jar="/" />
+      <element id="library" level="application" name="Python 3.6 interpreter library" />
+    </root>
+  </artifact>
+</component>

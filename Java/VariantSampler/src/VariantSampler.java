@@ -43,10 +43,6 @@ public class VariantSampler extends Application {
     private final TextField tfElapsedSeconds = new TextField();
     private final Button btCalculate = new Button("Calculate");
 
-    /* This is a global list that will be referenced
-    repeatedly during the execution of this program. */
-    private static final List<Double> listOfSamples = new ArrayList<>();
-
     /* This is a global SplittableRandom object which will be referenced
      repeatedly during the execution of this program. */
     private static final SplittableRandom randomInt = new SplittableRandom();
@@ -62,9 +58,9 @@ public class VariantSampler extends Application {
         GridPane gridPane = new GridPane();
         gridPane.setHgap(5);
         gridPane.setVgap(5);
-        gridPane.add(new Label("Number of variants involved in this experiment:"), 0, 0);
+        gridPane.add(new Label("Please enter the number of variants to be involved in this experiment (ex: 6):"), 0, 0);
         gridPane.add(tfNumberOfVariants, 1, 0);
-        gridPane.add(new Label("Number of samples (A.K.A. iterations) taken in this experiment:"), 0, 1);
+        gridPane.add(new Label("Please enter the number of samples to be used in this experiment (ex: 38):"), 0, 1);
         gridPane.add(tfNumberOfIterations, 1, 1);
         gridPane.add(new Label("Average number of wells needed to see all variants at least once:"), 0, 2);
         gridPane.add(tfAverageNumberOfWells, 1, 2);
@@ -95,7 +91,8 @@ public class VariantSampler extends Application {
 
         // This creates a scene and places it in the stage.
         Scene scene = new Scene(gridPane, 800, 600);
-        primaryStage.setTitle("Variant Sampler: An Experimentation Simulator"); // This sets the stage's title.
+        // This sets the stage's title.
+        primaryStage.setTitle("Variant Sampler: An Experiment Simulator for Synthetic Biologists");
         primaryStage.setScene(scene); // This places the scene in the stage.
         primaryStage.show(); // This actually displays the stage.
     }
@@ -103,7 +100,7 @@ public class VariantSampler extends Application {
     /* This is a helper function that picks a random variant, adds
     it to the list of variants already found, and then checks to
     see whether or not all possible variants have been seen. */
-    private static void findNumberOfWells(BigInteger numberOfVariants) {
+    private void findNumberOfWells(List<Double> listOfSamples, BigInteger numberOfVariants) {
         Set<Integer> foundVariants = new HashSet<>();
         double numberOfWells;
         boolean allFound = false;
@@ -137,18 +134,33 @@ public class VariantSampler extends Application {
         return Math.sqrt(meanOfDiffs);
     }
 
+    // This is a method that will initiate the variant sampling process.
     private void performComputations() {
+        /* This is a global list that will be referenced
+        repeatedly during the execution of this program. */
+        List<Double> listOfSamples = new ArrayList<>();
 
-        // This gets the gross and net income values from the text fields.
-        BigInteger numberOfVariants = new BigInteger(tfNumberOfVariants.getText());
-        BigInteger totalNumberOfSamples = new BigInteger(tfNumberOfIterations.getText());
+        // This creates empty BigInteger variables for the number of variants and number of samples.
+        BigInteger numberOfVariants = BigInteger.ZERO;
+        BigInteger totalNumberOfSamples = BigInteger.ZERO;
 
+        try {
+            // This gets the gross and net income values from the text fields.
+            numberOfVariants = new BigInteger(tfNumberOfVariants.getText());
+            totalNumberOfSamples = new BigInteger(tfNumberOfIterations.getText());
+        } catch (Exception e) {
+            // This displays the calculation results.
+            tfAverageNumberOfWells.setText("Please enter an integer value for the first two text fields.");
+            tfStandardDeviationOfSamples.setText("Please enter an integer value for the first two text fields.");
+            tfElapsedSeconds.setText("Please enter an integer value for the first two text fields.");
+            return;
+        }
         // This is to keep track of how much time the computation takes to complete.
-        BigDecimal tStart = BigDecimal.valueOf(System.currentTimeMillis());
+        long tStart = System.currentTimeMillis();
 
         // This finds the number of wells for the number of iterations previously specified.
         for (int i = 0; i < totalNumberOfSamples.intValue(); i++)
-            findNumberOfWells(numberOfVariants);
+            findNumberOfWells(listOfSamples, numberOfVariants);
 
         // This averages the number of wells for each iteration.
         double sumOfGeneratedSamples = listOfSamples.stream().mapToDouble(i -> i).sum();
@@ -158,22 +170,23 @@ public class VariantSampler extends Application {
         double standardDeviationOfSamples = findStandardDeviation(listOfSamples, averageNumberOfWells);
 
         // This allows us to show the user how long the computation took.
-        BigDecimal tEnd = BigDecimal.valueOf(System.currentTimeMillis());
-        BigDecimal tDelta = tEnd.subtract(tStart);
-        BigDecimal elapsedSeconds = tDelta.divide(BigDecimal.valueOf(1000.0));
+        long tEnd = System.currentTimeMillis();
+        long tDelta = tEnd - tStart;
+        double elapsedSeconds = tDelta / 1000.0;
 
         // This displays the calculation results.
-        tfNumberOfVariants.setText((String.format("%,d", numberOfVariants)));
-        tfNumberOfIterations.setText((String.format("%,d", totalNumberOfSamples)));
-        tfAverageNumberOfWells.setText(String.format("%,4.2f", averageNumberOfWells));
+        tfNumberOfVariants.setText((String.format("%d", numberOfVariants)));
+        tfNumberOfIterations.setText((String.format("%d", totalNumberOfSamples)));
+
+        tfAverageNumberOfWells.setText(String.format("%,4.4f", averageNumberOfWells));
         if (standardDeviationOfSamples >= 0)
-            tfStandardDeviationOfSamples.setText(String.format("%,4.2f", standardDeviationOfSamples));
+            tfStandardDeviationOfSamples.setText(String.format("%,4.4f", standardDeviationOfSamples));
         else tfStandardDeviationOfSamples.setText("N/A");
-        if (elapsedSeconds.intValue() >= 3600)
-            tfElapsedSeconds.setText(String.format("%,4.2f hours", elapsedSeconds));
-        else if (elapsedSeconds.intValue() >= 60)
-            tfElapsedSeconds.setText(String.format("%,4.2f minutes", elapsedSeconds.divide(BigDecimal.valueOf(60))));
+        if (elapsedSeconds >= 3600)
+            tfElapsedSeconds.setText(String.format("%,4.4f hours", elapsedSeconds / 3600));
+        else if (elapsedSeconds >= 60)
+            tfElapsedSeconds.setText(String.format("%,4.4f minutes", elapsedSeconds / 60));
         else
-            tfElapsedSeconds.setText(String.format("%,4.2f seconds", elapsedSeconds.divide(BigDecimal.valueOf(60))));
+            tfElapsedSeconds.setText(String.format("%,4.4f seconds", elapsedSeconds));
     }
 }
