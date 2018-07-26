@@ -1,9 +1,14 @@
 /*
  Alex Morehead
- 7/19/2018
+ 7/26/2018
 
- This is a JavaFX program that iteratively finds the number of
+ Written with generous support by the National Science Foundation.
+
+ This is a JavaFX application that iteratively finds the number of
  necessary samples to see all possible variants at least once.
+ The purpose of the software is to assist synthetic biology
+ researchers in establishing the size of the sample space for
+ experiments performed in a laboratory setting.
 
  Credit goes to eledman (Elise Edman) for the original solution to this problem.
 
@@ -17,9 +22,21 @@
  3. "Samples" or "iterations" can be thought of as representing the numbers of
   times an n-sided die was rolled, or rather will be rolled, until all sides of
   the die were/are seen at least once.
+
+ Results:
+
+ 1. The "average number of wells" metric describes how many rolls on average
+  had to be taken before seeing every side of an n-sided die.
+
+ 2. The "standard deviation of the samples" metric discloses how separated on average
+  the samples of die rolls were.
+
+ 3. The "amount of time it took to perform this computation" metric simply states how
+  many seconds, minutes, or hours it took to finish displaying the current computation's
+  results.
 */
 
-package VariantSampler.src;
+package src;
 
 import javafx.application.Application;
 import javafx.geometry.HPos;
@@ -31,11 +48,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.*;
 
 public class VariantSampler extends Application {
+    private final Label tDocumentation = new Label();
     private final TextField tfNumberOfVariants = new TextField();
     private final TextField tfNumberOfIterations = new TextField();
     private final TextField tfAverageNumberOfWells = new TextField();
@@ -58,17 +75,18 @@ public class VariantSampler extends Application {
         GridPane gridPane = new GridPane();
         gridPane.setHgap(5);
         gridPane.setVgap(5);
-        gridPane.add(new Label("Please enter the number of variants to be involved in this experiment (ex: 6):"), 0, 0);
-        gridPane.add(tfNumberOfVariants, 1, 0);
-        gridPane.add(new Label("Please enter the number of samples to be used in this experiment (ex: 38):"), 0, 1);
-        gridPane.add(tfNumberOfIterations, 1, 1);
-        gridPane.add(new Label("Average number of wells needed to see all variants at least once:"), 0, 2);
-        gridPane.add(tfAverageNumberOfWells, 1, 2);
-        gridPane.add(new Label("Standard deviation of the samples:"), 0, 3);
-        gridPane.add(tfStandardDeviationOfSamples, 1, 3);
-        gridPane.add(new Label("Amount of time it took to perform this computation:"), 0, 4);
-        gridPane.add(tfElapsedSeconds, 1, 4);
-        gridPane.add(btCalculate, 0, 5);
+        gridPane.add(tDocumentation, 0, 0);
+        gridPane.add(new Label(" Please enter the number of variants to be involved in this experiment (ex: 6):"), 0, 1);
+        gridPane.add(tfNumberOfVariants, 1, 1);
+        gridPane.add(new Label(" Please enter the number of samples to be used in this experiment (ex: 38):"), 0, 2);
+        gridPane.add(tfNumberOfIterations, 1, 2);
+        gridPane.add(new Label(" Average number of wells needed to see all variants at least once:"), 0, 3);
+        gridPane.add(tfAverageNumberOfWells, 1, 3);
+        gridPane.add(new Label(" Standard deviation of the samples:"), 0, 4);
+        gridPane.add(tfStandardDeviationOfSamples, 1, 4);
+        gridPane.add(new Label(" Amount of time it took to perform this computation:"), 0, 5);
+        gridPane.add(tfElapsedSeconds, 1, 5);
+        gridPane.add(btCalculate, 0, 6);
 
         // This sets the properties for the program's UI.
         gridPane.setAlignment(Pos.CENTER);
@@ -82,7 +100,40 @@ public class VariantSampler extends Application {
         tfElapsedSeconds.setEditable(false);
         GridPane.setHalignment(btCalculate, HPos.RIGHT);
 
-        // This sets dummy values for the gross and net income fields.
+        // This displays the program's documentation.
+        tDocumentation.setText(" This is a JavaFX application that iteratively finds the number of" +
+                " necessary samples\n to see all possible variants at least once." +
+                " The purpose of the software is to assist\n synthetic biology" +
+                " researchers in establishing the size of the sample space for\n" +
+                " experiments performed in a laboratory setting.\n" +
+                "\n" +
+                " This program was written by amorehead (Alex Morehead) with generous support\n by the National Science Foundation." +
+                " Special thanks to eledman (Elise Edman)\n for the original solution to this problem.\n" +
+                "\n" +
+                " Glossary:\n" +
+                "\n" +
+                " 1. \"Variants\" can be thought of as the quantity \"n\",\n" +
+                "  representing the number of sides on an n-sided die.\n" +
+                "\n" +
+                " 2. \"Wells\" can be thought of as representing the individual rolls of a die.\n" +
+                "\n" +
+                " 3. \"Samples\" or \"iterations\" can be thought of as representing the numbers of\n" +
+                "  times an n-sided die was rolled, or rather will be rolled, until all sides of\n" +
+                "  the die were/are seen at least once.\n" +
+                "  \n" +
+                " Results:\n" +
+                " \n" +
+                " 1. The \"average number of wells\" metric describes how many rolls on average     \n" +
+                "  had to be taken before seeing every side of an n-sided die. \n" +
+                "\n" +
+                " 2. The \"standard deviation of the samples\" metric discloses how separated on average \n" +
+                "  the samples of die rolls were.\n" +
+                "\n" +
+                " 3. The \"amount of time it took to perform this computation\" metric simply states how \n" +
+                "  many seconds, minutes, or hours it took to finish displaying the current computation's \n" +
+                "  results.");
+
+        // This sets dummy values for initial fields.
         tfNumberOfVariants.setText("6");
         tfNumberOfIterations.setText("38");
 
@@ -90,7 +141,7 @@ public class VariantSampler extends Application {
         btCalculate.setOnAction(e -> performComputations());
 
         // This creates a scene and places it in the stage.
-        Scene scene = new Scene(gridPane, 800, 600);
+        Scene scene = new Scene(gridPane, 1024, 768);
         // This sets the stage's title.
         primaryStage.setTitle("Variant Sampler: An Experiment Simulator for Synthetic Biologists");
         primaryStage.setScene(scene); // This places the scene in the stage.
@@ -150,9 +201,9 @@ public class VariantSampler extends Application {
             totalNumberOfSamples = new BigInteger(tfNumberOfIterations.getText());
         } catch (Exception e) {
             // This displays the calculation results.
-            tfAverageNumberOfWells.setText("Please enter an integer value for the first two text fields.");
-            tfStandardDeviationOfSamples.setText("Please enter an integer value for the first two text fields.");
-            tfElapsedSeconds.setText("Please enter an integer value for the first two text fields.");
+            tfAverageNumberOfWells.setText(" Please enter an integer value for the first two text fields.");
+            tfStandardDeviationOfSamples.setText(" Please enter an integer value for the first two text fields.");
+            tfElapsedSeconds.setText(" Please enter an integer value for the first two text fields.");
             return;
         }
         // This is to keep track of how much time the computation takes to complete.

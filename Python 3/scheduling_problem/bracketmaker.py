@@ -64,6 +64,9 @@ if __name__ == "__main__":
     # This initializes a list to be the same size as the "numberOfTeams".
     team_integers = list(range(1, number_of_teams + 1))
 
+    # This finds the number of participants in the tournament.
+    number_of_participants = 3 * number_of_rooms
+
     # This populates our list of team matchups with triplet-pairings of teams.
     prelim_team_matchups = []
     for z in chain.from_iterable(combinations(team_integers, 3) for r in range(3)):
@@ -84,51 +87,11 @@ if __name__ == "__main__":
     # This initializes the list of time slots.
     time_slots = [[] for i in range(number_of_rooms)]
 
-    # This populates the time slots of the tournament.
-    for i in range(number_of_rooms):
-        time_slots[i].append(triple_pairings)
+    # This populates the first time slot of the tournament.
+    time_slots[0] = triple_pairings
+
+    # This initializes the list of opposing teams seen.
+    teams_seen_list = {i: i + 1 for i in range(number_of_teams - 1)}
 
     # This prints out the filled time slots.
-    print("The time slots filled are {0}.".format(time_slots))
-
-    #                                       # Old, unused code #                                        #
-
-    # # This makes sure the union of any two sets in "prelim_team_matchups" is not greater than 1.
-    # undesirable_intersections = (prelim_team_matchups[i] & prelim_team_matchups[i + 1] for i in
-    #                              range(number_of_prelim_team_matchups - 1) if
-    #                              len(prelim_team_matchups[i] & prelim_team_matchups[i + 1]) > 1)
-    #
-    # # This converts the "undesirable_intersections" generator object into a list for convenience.
-    # list_of_undesirable_intersections = list(undesirable_intersections)
-    #
-    # # This displays the undesirable team matchup intersections.
-    # print("The undesirable team matchup intersections are {0}.".format(list_of_undesirable_intersections))
-    #
-    # # This stores the number of undesirable team matchup intersections.
-    # number_of_undesirable_intersections = len(list_of_undesirable_intersections)
-    #
-    # # This displays the number of undesirable team matchup intersections.
-    # print("The number of undesirable team matchup intersections is {0}.".format(number_of_undesirable_intersections))
-    #
-    # # This generates a list of integers representing the indexes of "prelim_team_matchups".
-    # prelim_team_matchup_ints = list(range(number_of_prelim_team_matchups - 1))
-    #
-    # # This removes unwanted team matchups by creating a new list consisting only of values of ordinal interest.
-    # team_matchups_1 = [prelim_team_matchups[i] for i in prelim_team_matchup_ints if
-    #                    len(prelim_team_matchups[i] & prelim_team_matchups[i + 1]) <= 1]
-    #
-    # # This displays the number of final team matchups.
-    # print("The final team matchups are {0}.".format(team_matchups_1))
-    #
-    # # This displays the number of final team matchups.
-    # print("The number of final team matchups is {0}.".format(len(team_matchups_1)))
-    #
-    # # This initializes our list of rooms (A.K.A. our x-dimension).
-    # rooms = list()
-    #
-    # # This populates our list of rooms.
-    # for i in range(number_of_rooms):
-    #     rooms.append(team_matchups_1[i])
-    #
-    # # This prints out our list of rooms.
-    # print("The list of generated matchups for \"Room 1\" is {0}.".format(rooms))
+    print("The time slots filled are {0}.".format(teams_seen_list))
