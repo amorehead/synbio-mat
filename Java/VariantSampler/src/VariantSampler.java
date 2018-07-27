@@ -104,7 +104,7 @@ public class VariantSampler extends Application {
         tDocumentation.setText(" This is a JavaFX application that iteratively finds the number of" +
                 " necessary samples\n to see all possible variants at least once." +
                 " The purpose of the software is to assist\n synthetic biology" +
-                " researchers in establishing the size of the sample space for\n" +
+                " researchers in establishing the size of sample space for\n" +
                 " experiments performed in a laboratory setting.\n" +
                 "\n" +
                 " This program was written by amorehead (Alex Morehead) with generous support\n by the National Science Foundation." +
@@ -113,23 +113,21 @@ public class VariantSampler extends Application {
                 " Glossary:\n" +
                 "\n" +
                 " 1. \"Variants\" can be thought of as the quantity \"n\",\n" +
-                "  representing the number of sides on an n-sided die.\n" +
+                "  representing the number of distinct promoters.\n" +
                 "\n" +
-                " 2. \"Wells\" can be thought of as representing the individual rolls of a die.\n" +
+                " 2. \"Wells\" can be thought of as representing the individual variations of distinct promoters.\n" +
                 "\n" +
-                " 3. \"Samples\" or \"iterations\" can be thought of as representing the numbers of\n" +
-                "  times an n-sided die was rolled, or rather will be rolled, until all sides of\n" +
-                "  the die were/are seen at least once.\n" +
+                " 3. \"Samples\" can be thought of as the number of pieces of DNA to see each promoter at least once.\n" +
                 "  \n" +
                 " Results:\n" +
                 " \n" +
-                " 1. The \"average number of wells\" metric describes how many rolls on average     \n" +
-                "  had to be taken before seeing every side of an n-sided die. \n" +
+                " 1. The \"average number of wells\" metric states how many wells on average     \n" +
+                "  had to be used before seeing every distinct variation of promoters. \n" +
                 "\n" +
-                " 2. The \"standard deviation of the samples\" metric discloses how separated on average \n" +
-                "  the samples of die rolls were.\n" +
+                " 2. The \"standard deviation of samples\" metric describes how separated on average \n" +
+                "  the samples of distinct promoters were.\n" +
                 "\n" +
-                " 3. The \"amount of time it took to perform this computation\" metric simply states how \n" +
+                " 3. The \"amount of time it took to perform this computation\" metric displays how \n" +
                 "  many seconds, minutes, or hours it took to finish displaying the current computation's \n" +
                 "  results.");
 
