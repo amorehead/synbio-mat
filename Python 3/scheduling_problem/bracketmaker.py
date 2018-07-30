@@ -94,4 +94,4 @@ if __name__ == "__main__":
     teams_seen_list = {i: i + 1 for i in range(number_of_teams - 1)}
 
     # This prints out the filled time slots.
-    print("The time slots filled are {0}.".format(teams_seen_list))
+    print("The time slots filled are {0}.".format(time_slots))

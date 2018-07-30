@@ -1,42 +1,37 @@
 /*
  Alex Morehead
- 7/26/2018
+ 7/30/2018
 
  Written with generous support by the National Science Foundation.
 
  This is a JavaFX application that iteratively finds the number of
- necessary samples to see all possible variants at least once.
+ necessary trials to see all possible variants at least once.
  The purpose of the software is to assist synthetic biology
- researchers in establishing the size of the sample space for
- experiments performed in a laboratory setting.
+ researchers in establishing the number of P-gel pads required
+ to see every variant at least once.
 
  Credit goes to eledman (Elise Edman) for the original solution to this problem.
 
  Glossary:
 
- 1. "Variants" can be thought of as the quantity "n",
-  representing the number of sides on an n-sided die.
+ 1. "Variants" can be thought of as the number of distinct promoters.
 
- 2. "Wells" can be thought of as representing the individual rolls of a die.
+ 2. "Wells" can be thought of as individual P-gel pads.
 
- 3. "Samples" or "iterations" can be thought of as representing the numbers of
-  times an n-sided die was rolled, or rather will be rolled, until all sides of
-  the die were/are seen at least once.
+ 3. "Trials" can be thought of as the number of times for the experiment to be performed.
 
  Results:
 
- 1. The "average number of wells" metric describes how many rolls on average
-  had to be taken before seeing every side of an n-sided die.
+ 1. The "average number of wells" metric states how many P-gel pads on average
+  had to be used to see every distinct variation of promoters.
 
- 2. The "standard deviation of the samples" metric discloses how separated on average
-  the samples of die rolls were.
+ 2. The "standard deviation of trials" metric describes how separated
+  on average the results of the trials were.
 
  3. The "amount of time it took to perform this computation" metric simply states how
   many seconds, minutes, or hours it took to finish displaying the current computation's
   results.
 */
-
-package src;
 
 import javafx.application.Application;
 import javafx.geometry.HPos;
@@ -56,7 +51,7 @@ public class VariantSampler extends Application {
     private final TextField tfNumberOfVariants = new TextField();
     private final TextField tfNumberOfIterations = new TextField();
     private final TextField tfAverageNumberOfWells = new TextField();
-    private final TextField tfStandardDeviationOfSamples = new TextField();
+    private final TextField tfStandardDeviationOfTrials = new TextField();
     private final TextField tfElapsedSeconds = new TextField();
     private final Button btCalculate = new Button("Calculate");
 
@@ -78,12 +73,12 @@ public class VariantSampler extends Application {
         gridPane.add(tDocumentation, 0, 0);
         gridPane.add(new Label(" Please enter the number of variants to be involved in this experiment (ex: 6):"), 0, 1);
         gridPane.add(tfNumberOfVariants, 1, 1);
-        gridPane.add(new Label(" Please enter the number of samples to be used in this experiment (ex: 38):"), 0, 2);
+        gridPane.add(new Label(" Please enter the number of trials to be used in this experiment (ex: 38):"), 0, 2);
         gridPane.add(tfNumberOfIterations, 1, 2);
         gridPane.add(new Label(" Average number of wells needed to see all variants at least once:"), 0, 3);
         gridPane.add(tfAverageNumberOfWells, 1, 3);
-        gridPane.add(new Label(" Standard deviation of the samples:"), 0, 4);
-        gridPane.add(tfStandardDeviationOfSamples, 1, 4);
+        gridPane.add(new Label(" Standard deviation of the trials:"), 0, 4);
+        gridPane.add(tfStandardDeviationOfTrials, 1, 4);
         gridPane.add(new Label(" Amount of time it took to perform this computation:"), 0, 5);
         gridPane.add(tfElapsedSeconds, 1, 5);
         gridPane.add(btCalculate, 0, 6);
@@ -93,39 +88,38 @@ public class VariantSampler extends Application {
         tfNumberOfVariants.setAlignment(Pos.BOTTOM_RIGHT);
         tfNumberOfIterations.setAlignment(Pos.BOTTOM_RIGHT);
         tfAverageNumberOfWells.setAlignment(Pos.BOTTOM_RIGHT);
-        tfStandardDeviationOfSamples.setAlignment(Pos.BOTTOM_RIGHT);
+        tfStandardDeviationOfTrials.setAlignment(Pos.BOTTOM_RIGHT);
         tfElapsedSeconds.setAlignment(Pos.BOTTOM_RIGHT);
         tfAverageNumberOfWells.setEditable(false);
-        tfStandardDeviationOfSamples.setEditable(false);
+        tfStandardDeviationOfTrials.setEditable(false);
         tfElapsedSeconds.setEditable(false);
         GridPane.setHalignment(btCalculate, HPos.RIGHT);
 
         // This displays the program's documentation.
         tDocumentation.setText(" This is a JavaFX application that iteratively finds the number of" +
-                " necessary samples\n to see all possible variants at least once." +
+                " necessary trials\n to see all possible variants at least once." +
                 " The purpose of the software is to assist\n synthetic biology" +
-                " researchers in establishing the size of sample space for\n" +
-                " experiments performed in a laboratory setting.\n" +
+                " researchers in establishing the number of P-gel pads required to\n" +
+                " see every variant at least once.\n" +
                 "\n" +
                 " This program was written by amorehead (Alex Morehead) with generous support\n by the National Science Foundation." +
                 " Special thanks to eledman (Elise Edman)\n for the original solution to this problem.\n" +
                 "\n" +
                 " Glossary:\n" +
                 "\n" +
-                " 1. \"Variants\" can be thought of as the quantity \"n\",\n" +
-                "  representing the number of distinct promoters.\n" +
+                " 1. \"Variants\" can be thought of as the number of distinct promoters.\n" +
                 "\n" +
-                " 2. \"Wells\" can be thought of as representing the individual variations of distinct promoters.\n" +
+                " 2. \"Wells\" can be thought of as individual P-gel pads.\n" +
                 "\n" +
-                " 3. \"Samples\" can be thought of as the number of pieces of DNA to see each promoter at least once.\n" +
+                " 3. \"Trials\" can be thought of as the number of times for the experiment to be performed.\n" +
                 "  \n" +
                 " Results:\n" +
                 " \n" +
-                " 1. The \"average number of wells\" metric states how many wells on average     \n" +
-                "  had to be used before seeing every distinct variation of promoters. \n" +
+                " 1. The \"average number of wells\" metric states how many P-gel pads on average\n" +
+                "  had to be used to see every distinct variation of promoters. \n" +
                 "\n" +
-                " 2. The \"standard deviation of samples\" metric describes how separated on average \n" +
-                "  the samples of distinct promoters were.\n" +
+                " 2. The \"standard deviation of trials\" metric describes how separated on average \n" +
+                "  the results of the trials were.\n" +
                 "\n" +
                 " 3. The \"amount of time it took to perform this computation\" metric displays how \n" +
                 "  many seconds, minutes, or hours it took to finish displaying the current computation's \n" +
@@ -149,7 +143,7 @@ public class VariantSampler extends Application {
     /* This is a helper function that picks a random variant, adds
     it to the list of variants already found, and then checks to
     see whether or not all possible variants have been seen. */
-    private void findNumberOfWells(List<Double> listOfSamples, BigInteger numberOfVariants) {
+    private void findNumberOfWells(List<Double> listOfTrials, BigInteger numberOfVariants) {
         Set<Integer> foundVariants = new HashSet<>();
         double numberOfWells;
         boolean allFound = false;
@@ -171,7 +165,7 @@ public class VariantSampler extends Application {
         }
 
         // This is where we add the current run's number of wells to the list of well totals.
-        listOfSamples.add(numberOfWells);
+        listOfTrials.add(numberOfWells);
     }
 
     /* This is an experimental method for finding the
@@ -187,20 +181,20 @@ public class VariantSampler extends Application {
     private void performComputations() {
         /* This is a global list that will be referenced
         repeatedly during the execution of this program. */
-        List<Double> listOfSamples = new ArrayList<>();
+        List<Double> listOfTrials = new ArrayList<>();
 
-        // This creates empty BigInteger variables for the number of variants and number of samples.
+        // This creates empty BigInteger variables for the number of variants and number of Trials.
         BigInteger numberOfVariants = BigInteger.ZERO;
-        BigInteger totalNumberOfSamples = BigInteger.ZERO;
+        BigInteger totalNumberOfTrials = BigInteger.ZERO;
 
         try {
             // This gets the gross and net income values from the text fields.
             numberOfVariants = new BigInteger(tfNumberOfVariants.getText());
-            totalNumberOfSamples = new BigInteger(tfNumberOfIterations.getText());
+            totalNumberOfTrials = new BigInteger(tfNumberOfIterations.getText());
         } catch (Exception e) {
             // This displays the calculation results.
             tfAverageNumberOfWells.setText(" Please enter an integer value for the first two text fields.");
-            tfStandardDeviationOfSamples.setText(" Please enter an integer value for the first two text fields.");
+            tfStandardDeviationOfTrials.setText(" Please enter an integer value for the first two text fields.");
             tfElapsedSeconds.setText(" Please enter an integer value for the first two text fields.");
             return;
         }
@@ -208,15 +202,15 @@ public class VariantSampler extends Application {
         long tStart = System.currentTimeMillis();
 
         // This finds the number of wells for the number of iterations previously specified.
-        for (int i = 0; i < totalNumberOfSamples.intValue(); i++)
-            findNumberOfWells(listOfSamples, numberOfVariants);
+        for (int i = 0; i < totalNumberOfTrials.intValue(); i++)
+            findNumberOfWells(listOfTrials, numberOfVariants);
 
         // This averages the number of wells for each iteration.
-        double sumOfGeneratedSamples = listOfSamples.stream().mapToDouble(i -> i).sum();
-        double averageNumberOfWells = sumOfGeneratedSamples / totalNumberOfSamples.intValue();
+        double sumOfGeneratedTrials = listOfTrials.stream().mapToDouble(i -> i).sum();
+        double averageNumberOfWells = sumOfGeneratedTrials / totalNumberOfTrials.intValue();
 
         // This finds the standard deviation of the well counts.
-        double standardDeviationOfSamples = findStandardDeviation(listOfSamples, averageNumberOfWells);
+        double standardDeviationOfTrials = findStandardDeviation(listOfTrials, averageNumberOfWells);
 
         // This allows us to show the user how long the computation took.
         long tEnd = System.currentTimeMillis();
@@ -225,12 +219,12 @@ public class VariantSampler extends Application {
 
         // This displays the calculation results.
         tfNumberOfVariants.setText((String.format("%d", numberOfVariants)));
-        tfNumberOfIterations.setText((String.format("%d", totalNumberOfSamples)));
+        tfNumberOfIterations.setText((String.format("%d", totalNumberOfTrials)));
 
         tfAverageNumberOfWells.setText(String.format("%,4.4f", averageNumberOfWells));
-        if (standardDeviationOfSamples >= 0)
-            tfStandardDeviationOfSamples.setText(String.format("%,4.4f", standardDeviationOfSamples));
-        else tfStandardDeviationOfSamples.setText("N/A");
+        if (standardDeviationOfTrials >= 0)
+            tfStandardDeviationOfTrials.setText(String.format("%,4.4f", standardDeviationOfTrials));
+        else tfStandardDeviationOfTrials.setText("N/A");
         if (elapsedSeconds >= 3600)
             tfElapsedSeconds.setText(String.format("%,4.4f hours", elapsedSeconds / 3600));
         else if (elapsedSeconds >= 60)
