@@ -4,8 +4,9 @@
  necessary trials to see all possible variants at least once.
  The purpose of the software is to assist synthetic biology
  researchers in establishing the number of wells required
- to see every variant at least once.
-
+ to see every variant at least once. [Click here to download
+ a JAR for it.](https://amorehead.github.io/assets/jar/Variant%20Sampler.jar)
+ 
  Credit goes to eledman (Elise Edman) for the original solution to this problem.
 
  Glossary:
