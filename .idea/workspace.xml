@@ -18,6 +18,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aee3c4cb-3a08-4d4c-9c74-6961e8b77e5c" name="Default" comment="Renaming NetLogo directory once again.">
+      <change afterPath="$PROJECT_DIR$/Python 3/scheduling_problem/bracketmaker2_elise.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/venv/lib64/python3.6/site-packages/easy-install.pth" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/venv/lib64/python3.6/site-packages/pip-10.0.1-py3.6.egg/EGG-INFO/PKG-INFO" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/venv/lib64/python3.6/site-packages/pip-10.0.1-py3.6.egg/EGG-INFO/SOURCES.txt" afterDir="false" />
@@ -317,6 +318,11 @@
       <change afterPath="$PROJECT_DIR$/venv/lib64/python3.6/site-packages/setuptools-39.1.0-py3.6.egg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/venv/lib64/python3.6/site-packages/setuptools.pth" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/VariantSampler/src/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Java/VariantSampler/src/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/VariantSampler/src/out/artifacts/Variant_Sampler_jar/Variant Sampler.jar" beforeDir="false" afterPath="$PROJECT_DIR$/Java/VariantSampler/src/out/artifacts/Variant_Sampler_jar/Variant Sampler.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/VariantSampler/src/out/production/VariantSampler/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Java/VariantSampler/src/out/production/VariantSampler/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python 3/scheduling_problem/bracketmaker.py" beforeDir="false" afterPath="$PROJECT_DIR$/Python 3/scheduling_problem/bracketmaker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Summer Research 2018.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Summer Research 2018.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/EGG-INFO/not-zip-safe" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/EGG-INFO/not-zip-safe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/__main__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/__main__.py" afterDir="false" />
@@ -600,13 +606,15 @@
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="Netlogo/turtles.nlogo" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Summer_Research_2018$bracketmaker.coverage" NAME="bracketmaker Coverage Results" MODIFIED="1532720361613" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Python 3/scheduling_problem" />
+    <SUITE FILE_PATH="coverage/Summer_Research_2018$bracketmaker.coverage" NAME="bracketmaker Coverage Results" MODIFIED="1533047635389" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Python 3/scheduling_problem" />
+    <SUITE FILE_PATH="coverage/Summer_Research_2018$bracketmaker2.coverage" NAME="bracketmaker2 Coverage Results" MODIFIED="1533073285570" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Python 3/scheduling_problem" />
     <SUITE FILE_PATH="coverage/Summer_Research_2018$recursiveCouponProblem.ic" NAME="recursiveCouponProblem Coverage Results" MODIFIED="1530851557959" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="DatabaseView">
@@ -627,51 +635,71 @@
     <session id="-1278865146">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="5" />
+          <entry key="project.closed" value="10" />
           <entry key="project.open.time.0" value="1" />
-          <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.1" value="4" />
           <entry key="project.open.time.10" value="1" />
+          <entry key="project.open.time.13" value="2" />
           <entry key="project.open.time.14" value="1" />
+          <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.2" value="1" />
-          <entry key="project.opened" value="5" />
+          <entry key="project.opened" value="11" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="java" value="15" />
-          <entry key="py" value="5" />
-          <entry key="txt" value="36" />
+          <entry key="py" value="3701" />
+          <entry key="txt" value="78" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JAVA" value="15" />
-          <entry key="PLAIN_TEXT" value="36" />
-          <entry key="Python" value="5" />
+          <entry key="PLAIN_TEXT" value="78" />
+          <entry key="Python" value="3701" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="2" />
+          <entry key="java" value="3" />
+          <entry key="py" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="2" />
+          <entry key="JAVA" value="3" />
+          <entry key="Python" value="4" />
         </counts>
       </usages-collector>
+      <usages-collector id="statistics.js.language.service.starts" />
     </session>
   </component>
   <component name="FavoritesManager">
     <favorites_list name="Summer Research 2018" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Java/VariantSampler/src/VariantSampler.java">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="bracketmaker2.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Python 3/scheduling_problem/bracketmaker2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="51" column="18" selection-start-line="51" selection-start-column="18" selection-end-line="51" selection-end-column="18" />
+            <state relative-caret-position="240">
+              <caret line="29" column="41" selection-start-line="29" selection-start-column="41" selection-end-line="29" selection-end-column="41" />
+              <folding>
+                <element signature="e#154#196#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bracketmaker2_elise.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Python 3/scheduling_problem/bracketmaker2_elise.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1040">
+              <caret line="87" column="10" selection-start-line="87" selection-start-column="10" selection-end-line="87" selection-end-column="10" />
+              <folding>
+                <element signature="e#0#37#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -698,6 +726,7 @@
       <find>match-up</find>
       <find>time slots</find>
       <find>samples</find>
+      <find>matches</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -719,8 +748,10 @@
         <option value="$PROJECT_DIR$/Python 2/iter_coupon_problem.py" />
         <option value="$PROJECT_DIR$/Python 2/recur_coupon_problem.py" />
         <option value="$PROJECT_DIR$/Java/iterativeCouponProblem.java" />
-        <option value="$PROJECT_DIR$/Python 3/scheduling_problem/bracketmaker.py" />
         <option value="$PROJECT_DIR$/Java/VariantSampler/src/VariantSampler.java" />
+        <option value="$PROJECT_DIR$/Python 3/scheduling_problem/bracketmaker.py" />
+        <option value="$PROJECT_DIR$/Python 3/scheduling_problem/bracketmaker2.py" />
+        <option value="$PROJECT_DIR$/Python 3/scheduling_problem/bracketmaker2_elise.py" />
       </list>
     </option>
   </component>
@@ -730,9 +761,12 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="254" />
-    <option name="y" value="90" />
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="275" />
+    <option name="y" value="162" />
     <option name="width" value="1378" />
     <option name="height" value="788" />
   </component>
@@ -744,9 +778,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
-      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -757,25 +790,19 @@
             <path>
               <item name="Summer Research 2018" type="b2602c69:ProjectViewProjectNode" />
               <item name="Summer Research 2018" type="462c0819:PsiDirectoryNode" />
-              <item name="Java" type="462c0819:PsiDirectoryNode" />
+              <item name="Python 3" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Summer Research 2018" type="b2602c69:ProjectViewProjectNode" />
               <item name="Summer Research 2018" type="462c0819:PsiDirectoryNode" />
-              <item name="Java" type="462c0819:PsiDirectoryNode" />
-              <item name="VariantSampler" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Summer Research 2018" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Summer Research 2018" type="462c0819:PsiDirectoryNode" />
-              <item name="Java" type="462c0819:PsiDirectoryNode" />
-              <item name="VariantSampler" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Python 3" type="462c0819:PsiDirectoryNode" />
+              <item name="scheduling_problem" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -784,13 +811,13 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1532720434199" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1533070917394" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Problems" />
     <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="project.structure.side.proportion" value="0.100806475" />
     <property name="settings.editor.selected.configurable" value="preferences.editor" />
   </component>
   <component name="RecentsManager">
@@ -810,7 +837,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.bracketmaker">
+  <component name="RunManager" selected="Python.bracketmaker2">
     <configuration name="VariantSampler" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="VariantSampler.src.VariantSampler" />
       <module name="Summer Research 2018" />
@@ -821,13 +848,10 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <method v="2">
+      <method>
         <option name="Make" enabled="true" />
       </method>
     </configuration>
@@ -841,30 +865,28 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
     </configuration>
     <configuration name="iterativeCouponProblem" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="iterativeCouponProblem" />
       <module name="Summer Research 2018" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="poolingProblem" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="poolingProblem" />
-      <module name="Summer Research 2018" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <method v="2">
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+      <method>
         <option name="Make" enabled="true" />
       </method>
     </configuration>
@@ -886,33 +908,65 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
+    </configuration>
+    <configuration name="bracketmaker2" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Summer Research 2018" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Python 3/scheduling_problem" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Python 3/scheduling_problem/bracketmaker2_alex.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
       <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
       <properties />
       <listeners />
-      <method v="2">
+      <method>
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
       <item itemvalue="Python.bracketmaker" />
-      <item itemvalue="Application.poolingProblem" />
       <item itemvalue="Application.iterativeCouponProblem" />
       <item itemvalue="Application.VariantSampler" />
       <item itemvalue="Application.iterativeCouponProblem (1)" />
+      <item itemvalue="Python.bracketmaker2" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.bracketmaker2" />
         <item itemvalue="Python.bracketmaker" />
         <item itemvalue="Application.VariantSampler" />
         <item itemvalue="Application.iterativeCouponProblem (1)" />
         <item itemvalue="Application.iterativeCouponProblem" />
-        <item itemvalue="Application.poolingProblem" />
       </list>
     </recent_temporary>
   </component>
@@ -978,6 +1032,13 @@
       <workItem from="1532961616459" duration="239000" />
       <workItem from="1532969865044" duration="77000" />
       <workItem from="1532976460550" duration="118000" />
+      <workItem from="1532980106589" duration="54000" />
+      <workItem from="1532981362948" duration="261000" />
+      <workItem from="1533047360605" duration="1450000" />
+      <workItem from="1533063265600" duration="7404000" />
+      <workItem from="1533072058085" duration="279000" />
+      <workItem from="1533072944054" duration="415000" />
+      <workItem from="1533224302852" duration="66000" />
     </task>
     <task id="LOCAL-00001" summary="Changed the main list data structure to a set in both the Python &amp; Java coupon problem solutions to increase speed &amp; efficiency.">
       <created>1530496536277</created>
@@ -1098,80 +1159,86 @@
       <option name="project" value="LOCAL" />
       <updated>1532969931785</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Updated Variant Sampler terminology again.">
+      <created>1532980151439</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1532980151439</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="133176000" />
+    <option name="totallyTimeSpent" value="143105000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="254" y="90" width="1378" height="788" extended-state="0" />
-    <editor active="true" />
+    <frame x="55" y="30" width="1865" height="1050" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49624062" visible="true" weight="0.22138554" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Designer" order="2" />
-      <window_info id="Image Layers" order="3" />
-      <window_info id="Capture Tool" order="4" />
-      <window_info id="UI Designer" order="5" />
-      <window_info id="Favorites" order="6" sideWeight="0.5037594" side_tool="true" weight="0.12225201" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32977304" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49927112" weight="0.44427246" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39624724" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32452276" />
-      <window_info anchor="bottom" id="Messages" order="8" weight="0.32781458" />
-      <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50072885" side_tool="true" weight="0.32176235" />
-      <window_info anchor="bottom" id="Concurrent Activities Diagram" order="12" weight="0.3298969" />
-      <window_info anchor="bottom" id="Inspection Results" order="13" weight="0.3289183" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="right" id="Maven Projects" order="5" />
-      <window_info anchor="right" id="SciView" order="6" />
-      <window_info anchor="right" id="Theme Preview" order="7" />
-      <window_info anchor="right" id="Coverage" order="8" side_tool="true" weight="0.32980332" />
+      <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50072885" side_tool="true" weight="0.32176235" />
+      <window_info anchor="right" id="Maven Projects" order="5" />
+      <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49927112" weight="0.30804953" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32452276" />
+      <window_info id="Designer" order="2" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49624062" visible="true" weight="0.15096419" />
       <window_info anchor="right" id="Database" order="10" weight="0.32980332" />
+      <window_info anchor="right" id="SciView" order="6" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info id="UI Designer" order="5" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39473686" />
+      <window_info id="Favorites" order="6" sideWeight="0.5037594" side_tool="true" weight="0.12225201" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Messages" order="8" weight="0.32781458" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info id="Image Layers" order="3" />
+      <window_info anchor="bottom" id="Inspection Results" order="13" weight="0.3289183" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info anchor="right" id="Coverage" order="8" side_tool="true" weight="0.32980332" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Concurrent Activities Diagram" order="12" weight="0.3298969" />
+      <window_info anchor="right" id="Theme Preview" order="7" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32977304" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23250729" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="Designer" order="2" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32309747" />
       <window_info id="Image Layers" order="3" />
-      <window_info id="Capture Tool" order="4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="right" id="Coverage" order="8" side_tool="true" weight="0.32980332" />
       <window_info id="UI Designer" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32977304" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32309747" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.398827" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32452276" />
-      <window_info anchor="bottom" id="Messages" order="8" weight="0.32844576" />
-      <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" weight="0.3298969" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
+      <window_info id="Capture Tool" order="4" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" weight="0.3298969" />
+      <window_info anchor="bottom" id="Messages" order="8" weight="0.32844576" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23250729" />
+      <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="right" id="Maven Projects" order="5" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="SciView" order="6" />
-      <window_info anchor="right" id="Theme Preview" order="7" />
-      <window_info anchor="right" id="Coverage" order="8" side_tool="true" weight="0.32980332" />
-      <window_info anchor="right" id="Palette&#9;" order="9" />
       <window_info anchor="right" id="Database" order="10" weight="0.32980332" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="9" />
+      <window_info anchor="right" id="Theme Preview" order="7" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32977304" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.398827" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1197,9 +1264,20 @@
     <MESSAGE value="Renaming NetLogo directory once again." />
     <MESSAGE value="Updated Variant Sampler to reset totals after each calculation." />
     <MESSAGE value="Updated Variant Sampler terminology." />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated Variant Sampler terminology." />
+    <MESSAGE value="Updated Variant Sampler terminology again." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated Variant Sampler terminology again." />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Python 3/scheduling_problem/bracketmaker2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="41" selection-start-line="29" selection-start-column="41" selection-end-line="29" selection-end-column="41" />
+          <folding>
+            <element signature="e#154#196#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/C++/main.cpp" />
     <entry file="file://$PROJECT_DIR$/C++/recursive_coupon_problem.cpp" />
     <entry file="jar://$USER_HOME$/Downloads/dsiutils-2.5.1.jar!/it/unimi/dsi/util/XorShift1024StarPhiRandom.class" />
@@ -1319,17 +1397,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Python 3/scheduling_problem/bracketmaker.py">
+    <entry file="file://$PROJECT_DIR$/Java/VariantSampler/src/VariantSampler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="478">
-          <caret line="96" column="60" selection-start-line="96" selection-start-column="60" selection-end-line="96" selection-end-column="60" />
+        <state relative-caret-position="72">
+          <caret line="48" column="18" selection-start-line="48" selection-start-column="18" selection-end-line="48" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Java/VariantSampler/src/VariantSampler.java">
+    <entry file="file://$PROJECT_DIR$/Java/PoolingProblem/poolingProblem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="51" column="18" selection-start-line="51" selection-start-column="18" selection-end-line="51" selection-end-column="18" />
+        <state relative-caret-position="204">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Python 3/scheduling_problem/bracketmaker.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="792">
+          <caret line="51" selection-start-line="51" selection-end-line="54" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Python 3/scheduling_problem/bracketmaker2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="29" column="41" selection-start-line="29" selection-start-column="41" selection-end-line="29" selection-end-column="41" />
+          <folding>
+            <element signature="e#154#196#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Python 3/scheduling_problem/bracketmaker2_elise.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1040">
+          <caret line="87" column="10" selection-start-line="87" selection-start-column="10" selection-end-line="87" selection-end-column="10" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1343,7 +1448,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.100806475" />
               </list>
             </option>
           </splitter-proportions>
@@ -1355,7 +1460,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.100806475" />
               </list>
             </option>
           </splitter-proportions>
@@ -1367,7 +1472,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.100806475" />
               </list>
             </option>
           </splitter-proportions>
@@ -1379,7 +1484,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.100806475" />
               </list>
             </option>
           </splitter-proportions>
@@ -1391,7 +1496,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.100806475" />
               </list>
             </option>
           </splitter-proportions>
@@ -1415,7 +1520,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.100806475" />
               </list>
             </option>
           </splitter-proportions>

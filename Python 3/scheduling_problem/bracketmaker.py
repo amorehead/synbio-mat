@@ -33,6 +33,15 @@ def calc_ideal_time_slots(number_of_teams):
     return ideal_number_of_matches / ideal_number_of_rooms
 
 
+# This is a function for calculating the number of Partial Steiner Triples given a number of teams.
+def find_number_of_triples(number_of_teams):
+    if number_of_teams % 6 == 5:
+        number_of_triples = (((1 / 3) * number_of_teams) * (1 / 2) - 1) - 1
+    else:
+        number_of_triples = (((1 / 3) * number_of_teams) * (1 / 2))
+    return number_of_triples
+
+
 # This function will print out a formatted version of the generated bracket.
 def print_bracket(number_of_rooms, number_of_time_slots):
     print("\n", list(range(1, number_of_time_slots + 1)))
