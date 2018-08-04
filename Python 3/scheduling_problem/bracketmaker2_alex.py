@@ -51,7 +51,7 @@ def main():
     for h in range(number_of_teams):
         solver.Add((x[h, h, j, k] for j in range(number_of_rooms) for k in range(real_number_of_time_slots)) == 0)
 
-    # Constraint 2: This says that the order of team pairings does not  matter.
+    # Constraint 2: This says that the order of team pairings does not matter.
     for h in range(number_of_teams):
         for i in range(number_of_teams):
             solver.Add((x[h, i, j, k] - x[i, h, j, k] for j in range(number_of_rooms) for k in
@@ -80,7 +80,7 @@ def main():
             solver.Add(
                 solver.Sum(([x[h, i, j, k] for i in range(number_of_teams) for h in range(number_of_teams)])) == 3)
 
-    # Constraint 7: This makes 3 teams play in each row at each time-slot.
+    # Constraint 7: This makes 3 teams play in each room at each time-slot.
     for g in range(number_of_teams - 2):
         for h in range(g + 1, number_of_teams - 1):
             for i in range(h + 1, number_of_teams):
