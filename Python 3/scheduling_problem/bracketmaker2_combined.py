@@ -1,6 +1,6 @@
 """
-Elise Edman & Alex Morehead
-8/4/2018
+Alex Morehead & Elise Edman
+12/19/2018
 
 This is a program that finds an "optimal"
 bracket for quiz-style tournaments having
@@ -16,13 +16,13 @@ def main():
                              pywraplp.Solver.CBC_MIXED_INTEGER_PROGRAMMING)
 
     # This represents the number of teams in the tournament (variables h and i).
-    n = 9
+    n = 15
     # This represents the number of rooms used for the tournament (variable j).
-    r = 3
+    r = 4
     # This represents the number of time-slots used during the tournament (variable k).
-    t = 4
+    t = 6
     # This represents the number of matches taking place during the tournament (variable m).
-    m = 4
+    m = 10
 
     # This creates our four-dimensional list for the tournament.
     x = {}
@@ -39,16 +39,17 @@ def main():
 
     # Now, we will begin establishing our constraints for the tournament.
 
-    # Constraint 1: This says that teams cannot play themselves. -- [No Longer Needed]
-    # for h in range(n):
-    #     solver.Add((x[h, h, j, k] for j in range(n) for k in range(t)) == 0)
+    # Constraint 1: This says that teams cannot play themselves.
+    # This constraint is actually already handled by our list instantiation
+    # with the conditional logic in place (if h == i: ...).
 
     # Constraint 2: The order of team pairings does not matter.
     # In other words, the tournament matrix is the same across the diagonal.
     for h in range(n):
-        for j in range(r):
-            for k in range(t):
-                solver.Add((x[h, i, j, k] == x[i, h, j, k] for i in range(n)))
+        for i in range(n):
+            for j in range(r):
+                for k in range(t):
+                    solver.Add((x[h, i, j, k] == x[i, h, j, k]))
 
     # Constraint 3: No pair plays each other more than once.
     for h in range(n - 1):
@@ -74,23 +75,23 @@ def main():
         for h in range(g + 1, n - 1):
             for i in range(h + 1, n):
                 solver.Add(solver.Sum(
-                    [x[g, h, j, k] + x[h, i, j, k] + x[g, i, j, k] for j in range(r) for k in range(t)]) != 2)
+                    [x[g, h, j, k] + x[h, i, j, k] + x[g, i, j, k] for j in range(r) for k in range(t)]) >= 2.000001)
 
     # This tells the solver object to find a solution for the proposed tournament scenario.
-    solver.Solve()
+    result_status = solver.Solve()
+    assert result_status == pywraplp.Solver.OPTIMAL
+    assert solver.VerifySolution(1e-7, True)
 
     # The following displays the solution to the user.
-    print("Total cost = ", solver.Objective().Value())
-    print()
+    print("The cost of finding this solution was %d.\n" % solver.Objective().Value())
     for h in range(n):
         for i in range(n):
             for j in range(r):
                 for k in range(t):
                     if x[h, i, j, k].solution_value() > 0:
-                        print("Teams %i,%i assigned to room %i at time-slot %i." % (h, i, j, k))
+                        print("Team %i and Team %i were assigned to room %i at time-slot %i." % (h, i, j, k))
 
-    print()
-    print("Time to complete this computation: ", solver.WallTime(), " milliseconds")
+    print("\nThe amount of time spent finding this solution was", solver.WallTime(), "milliseconds.")
 
 
 # This ensures that the main method gets called at the script's startup.
